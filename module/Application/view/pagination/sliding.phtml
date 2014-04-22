@@ -1,0 +1,43 @@
+
+<?php if ($this->pageCount): ?>
+<div class="paginationControl">
+
+
+<!-- First page link -->
+<?php if (isset($this->previous)): ?>
+  <a href="<?php echo $this->url($this->route, array('page' => $this->first)); ?>">
+    << Primera
+  </a> --
+<?php else: ?>
+  <span class="disabled"><< Primera</span> --
+<?php endif; ?>
+
+<!-- Previous page link -->
+<?php if (isset($this->previous)): ?>
+  <a href="<?php echo $this->url($this->route, array('page' => $this->previous)); ?>">
+    < Anterior
+  </a> --
+<?php else: ?>
+  <span class="disabled">< Anterior</span> --
+<?php endif; ?>
+
+<!-- Next page link -->
+<?php if (isset($this->next)): ?>
+  <a href="<?php echo $this->url($this->route, array('page' => $this->next)); ?>">
+    Siguiente >
+  </a> --
+<?php else: ?>
+  <span class="disabled">Siguiente ></span> --
+<?php endif; ?>
+
+<!-- Last page link -->
+<?php if (isset($this->next)): ?>
+  <a href="<?php echo $this->url($this->route, array('page' => $this->last)); ?>">
+    &Uacute;ltima >>
+  </a>
+<?php else: ?>
+  <span class="disabled">&Uacute;ltima >></span>
+<?php endif; ?>
+
+</div>
+<?php endif; ?>

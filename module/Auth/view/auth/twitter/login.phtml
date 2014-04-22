@@ -1,0 +1,68 @@
+<h1>Formulario de Registro</h1>
+
+<p id="form-errors"> </p>
+<?php
+$form = $this->form;
+$form->setAttribute('action', '/auth/twitter/registrar');
+$form->prepare();
+
+
+// Get the form label plugin
+$formLabel = $this->plugin('formLabel');
+
+// Render the opening tag
+echo $this->form()->openTag($form);
+?>
+<div class="form_element">
+<?php
+    $name = $form->get('usuario');
+    echo $formLabel->openTag() . $name->getOption('label');
+    echo $formLabel->closeTag();
+    echo $this->formInput($name);
+    echo $this->formElementErrors($name);
+?></div>
+<div class="floatstop"></div>
+
+<div class="form_element">
+<?php
+    $name = $form->get('clave');
+    echo $formLabel->openTag() . $name->getOption('label');
+    echo $formLabel->closeTag();
+    echo $this->formInput($name);
+    echo $this->formElementErrors($name);
+?></div>
+<div class="floatstop"></div>
+<div class="form_element">
+<?php
+    $name = $form->get('clave2');
+    echo $formLabel->openTag() . $name->getOption('label');
+    echo $formLabel->closeTag();
+    echo $this->formInput($name);
+    echo $this->formElementErrors($name);
+?></div>
+<div class="floatstop"></div>
+<div class="form_element">
+<?php
+    $name = $form->get('email');
+    echo $formLabel->openTag() . $name->getOption('label');
+    echo $formLabel->closeTag();
+    echo $this->formInput($name);
+    echo $this->formElementErrors($name);
+?></div>
+<div class="floatstop"></div>
+<div class="form_element">
+<?php
+    $name = $form->get('email2');
+    echo $formLabel->openTag() . $name->getOption('label');
+    echo $formLabel->closeTag();
+    echo $this->formInput($name);
+    echo $this->formElementErrors($name);
+?></div>
+<div class="floatstop"></div>
+<?php echo $this->formElement($form->get('csrf')) ?>
+<?php echo $this->formElement($form->get('submit')) ?>
+<input type="hidden" name="usuario_id" value=<?php echo $this->id ?>>
+<?php echo $this->form()->closeTag() ?>
+<div class="floatstop"></div>
+<div style="text-align:left"><a href="/auth/facebook"><img src="/images/reg-facebook.png"  width="200px"/></a></div>
+<div style="text-align:left"><a href="/auth/twitter"><img src="/images/reg-twitter.png"  width="200px"/></a></div>

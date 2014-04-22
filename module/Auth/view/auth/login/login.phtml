@@ -1,0 +1,53 @@
+<h1>Ingresar al sitio</h1>
+
+<p id="form-errors"> </p>
+<?php
+$form = $this->form;
+$form->setAttribute('action', '/auth/login/login');
+$form->prepare();
+
+
+// Get the form label plugin
+$formLabel = $this->plugin('formLabel');
+
+// Render the opening tag
+echo $this->form()->openTag($form);
+?>
+<div class="form_element">
+<?php
+    $name = $form->get('username');
+    echo $formLabel->openTag() . $name->getOption('label');
+    echo $formLabel->closeTag();
+    echo $this->formInput($name);
+    echo $this->formElementErrors($name);
+?></div>
+<div class="floatstop"></div>
+
+<div class="form_element">
+<?php
+    $name = $form->get('password');
+    echo $formLabel->openTag() . $name->getOption('label');
+    echo $formLabel->closeTag();
+    echo $this->formInput($name);
+    echo $this->formElementErrors($name);
+?></div>
+<div class="floatstop"></div>
+<div class="form_element">
+<?php
+    $name = $form->get('rememberme');
+    echo $formLabel->openTag() . $name->getOption('label');
+    echo $formLabel->closeTag();
+    echo $this->formInput($name);
+    echo $this->formElementErrors($name);
+?></div>
+<div class="floatstop"></div>
+<?php echo $this->formElement($form->get('csrf')) ?>
+<?php echo $this->formElement($form->get('submit')) ?>
+
+<?php echo $this->form()->closeTag() ?>
+<div class="floatstop"></div>
+<div style="text-align:left"><a href="/auth/facebook"><img src="/images/login-facebook.gif" /></a></div>
+<div style="text-align:left"><a href="/auth/twitter"><img src="/images/reg-twitter.png"  width="200px"/></a></div>
+
+<a href="<?php echo $this->url('third-party-connect', array('controller' => 'authorize', 'action' => 'facebook'), true); ?>">Connect with facebook</a>
+<a href="<?php echo $this->url('third-party-connect', array('controller' => 'authorize', 'action' => 'twitter'), true); ?>">Connect with twitter</a>

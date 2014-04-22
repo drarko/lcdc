@@ -1,0 +1,357 @@
+/* 
+    Document   : estilos
+    Created on : 31/12/2011, 18:08:39
+    Author     : drarko
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+body {
+    background-color: #333399;
+    font-size: 15px;
+    line-height: 1.25em;
+}
+
+#sep {
+    height: 20px;
+    
+    
+}
+
+#nav_izq_cab {
+    background-image: url(/images/nav_izq_cab.gif);
+    height: 20px;
+    width: 160px;
+}
+
+#nav_izq_sec {
+    background-image: url(/images/nav_izq_sec.gif);
+    height: 52px;
+    width: 160px;
+}
+#nav_izq_con {
+    background-image: url(/images/nav_izq_con.gif);
+    background-repeat: repeat-y;
+}
+#nav_izq_fot {
+    background-image: url(/images/nav_izq_fot.gif);
+    height: 20px;
+    width: 160px;
+}
+
+#nav_izq_enl a {
+	display:block;
+	width:140px;
+	height:40px;  
+	text-decoration:none;
+}
+#nav_izq_enl a:hover {
+	background-position:bottom;
+}
+#nav_izq_enl a span {
+	display:none; 
+}
+#enl_inicio {
+	background-image: url(/images/botones/inicio.gif);
+}
+#enl_noticias {
+	background-image: url(/images/botones/noticias.gif);
+}
+#enl_foros {
+	background-image: url(/images/botones/foros.gif);
+}
+#enl_tamagochi {
+	background-image: url(/images/botones/tamagochi.gif);
+}
+#enl_enciclopedia {
+	background-image: url(/images/botones/enciclopedia.gif);
+}
+#enl_descargas {
+	background-image: url(/images/botones/descargas.gif);
+}
+#enl_imagenes {
+	background-image: url(/images/botones/imagenes.gif);
+}
+#enl_contacto {
+	background-image: url(/images/botones/contacto.gif);
+}
+
+#cont_cab {
+    background-image: url(/images/cont_cab.gif);
+    height: 20px;
+    width: 580px;   
+}
+#cont_fot {
+    background-image: url(/images/cont_fot.gif);
+    height: 20px;
+    width: 580px;   
+}
+#cont_con {
+   
+    background-image: url(/images/cont_con.gif);
+    background-repeat: repeat;
+}
+#nav_der_cab {
+    background-image: url(/images/nav_der_cab.gif);
+    height: 20px;
+    width: 160px;
+}
+
+#nav_der_con {
+    background-image: url(/images/nav_der_con.gif);
+    background-repeat: repeat-y;
+}
+#nav_der_fot {
+    background-image: url(/images/nav_der_fot.gif);
+    height: 20px;
+    width: 160px;
+}
+#cont_int_cab {
+    background-image: url(/images/cont_int_cab.gif);
+    height: 25px;
+    width: 560px;    
+}
+#cont_int_fot {
+    background-image: url(/images/cont_int_fot.gif);
+    height: 25px;
+    width: 560px;
+    
+}
+#cont_int_con {
+    width: 560px;    
+    background-color: #0030ff;
+
+}
+
+#cont_cont {
+    text-align: center;    
+}
+
+
+.floatstop {
+  clear:both;
+}
+
+form {
+        text-align: left;
+
+	}
+
+form input {
+    background-color: #1d4d7e;
+}
+
+form label {
+	float:left;
+	display:block;
+	margin-bottom:2px;
+	font-size:1em;
+	}
+form input {
+	display:block;
+	float:right;
+	color: white;
+	}
+form select {
+	float:right;
+	margin-right:80px;
+	}
+
+hr {
+	clear:both;
+	visibility:hidden;	
+}        
+
+
+form ul {
+    list-style-type: none;    
+    color: white;
+    font-size:0.8em;
+    
+}
+
+.flashMessages{
+  background-color: #0489B1;
+}
+.paginationControl{
+  background-color: #0489B1;  
+}
+
+h1 {
+  text-decoration: underline  
+}
+
+.noticias li 
+{  
+    background-color: #0489B1;
+    border: 1px solid;
+    border-color: blue;
+    margin: 10px;
+    
+}
+
+.n-titulo a
+{
+  color: white;
+  text-decoration: underline;
+  font-size: 20px;
+  text-align: center;
+}
+.n-titulo span
+{
+  color: blue;
+  padding: 5px;
+  font-size:13px;
+}
+.n-resumen
+{
+  color: black;
+  text-align: left;
+  padding:15px;
+}
+.n-link
+{
+  text-align: right;
+}
+
+#n-contenido {
+  background-color: #0489B1;
+  margin: 10px;
+  min-height: 250px;
+  height: auto !important;
+  height: 250px; 
+  text-align:left;
+  padding: 10px;
+  position: relative;
+}
+
+.n-votos {
+    float:left;
+    display: block;  
+}
+
+.n-votar {
+    float:right;
+    display: block;    
+}
+
+.n-cant-comentarios
+{
+  text-align:left;
+  
+}
+
+.n-comentario {
+  background-color: #0489B1;
+  margin: 10px;
+  min-height: 50px;
+  height: auto !important;
+  height: 50px; 
+  text-align:left;
+  padding: 10px;
+  position: relative;
+  display:block;
+}
+
+.n-c-usuario a
+{
+  float:left;
+  color:white;
+  font-weight: bold;
+}
+.n-c-cont 
+{
+  float:left;
+  margin: 0px 0px 10px 10px;
+  
+}
+.n-autor a
+{
+    float:left;
+    display: block;    
+    position: absolute; 
+    bottom: 0px; 
+  color:white;
+  font-weight: bold;    
+}
+.n-fecha
+{
+    float:right;
+    display: block;    
+    position: absolute; 
+    bottom: 0px;
+    right: 5px;
+    color: white;
+}
+
+#neg
+{
+  display:block; 
+  float: right;
+  margin: 0px 0px 10px 10px;
+}
+#pos
+{
+  float: right;
+  display:block; 
+}
+#neg a
+{
+  color: black;
+}
+#pos a
+{
+  color: black;
+}
+.n-nuevo-comentario
+{
+  
+  background-color: #0489B1;
+  margin: 10px;
+  min-height: 50px;
+  height: auto !important;
+  height: 50px; 
+  text-align:left;
+  padding: 10px;
+  
+}
+.n-c-repo
+{
+  position: absolute;
+  right: 3px;
+  height: 20px;
+  width: 20px;
+}
+.n-v
+{
+  position: relative;
+  float: right;
+  height: 20px;
+  width: 20px;
+}
+
+.over span.tooltip {display: none;}
+.over:hover span.tooltip {
+  padding: 5px;
+  background-color: red;
+  color:#000000;
+  font-size:0.8em;
+  position:absolute;
+  top:0;
+  left:20px;
+  display:block;
+  z-index:10;
+}
+
+.r-accion
+{
+  margin: 10px;
+  padding: 10px;
+  background-color: #0489B1;  
+  font-weight: bold;
+}

@@ -1,0 +1,121 @@
+/* 
+    Document   : estilos
+    Created on : 31/12/2011, 18:08:39
+    Author     : drarko
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+body {
+    background-color: #333399;
+}
+
+#sep {
+    height: 20px;
+    
+    
+}
+
+#nav_izq_cab {
+    background-image: url(/images/nav_izq_cab.gif);
+    height: 20px;
+    width: 160px;
+}
+
+#nav_izq_sec {
+    background-image: url(/images/nav_izq_sec.gif);
+    height: 52px;
+    width: 160px;
+}
+#nav_izq_con {
+    background-image: url(/images/nav_izq_con.gif);
+    background-repeat: repeat-y;
+}
+#nav_izq_fot {
+    background-image: url(/images/nav_izq_fot.gif);
+    height: 20px;
+    width: 160px;
+}
+
+#nav_izq_enl a {
+        display:block;
+        width:140px;
+        height:40px;  
+        text-decoration:none;
+}
+#nav_izq_enl a:hover {
+        background-position:bottom;
+}
+#nav_izq_enl a span {
+        display:none; 
+}
+#enl_inicio {
+        background-image: url(/images/botones/inicio.gif);
+}
+#enl_noticias {
+        background-image: url(/images/botones/noticias.gif);
+}
+#enl_foros {
+        background-image: url(/images/botones/foros.gif);
+}
+#enl_tamagochi {
+        background-image: url(/images/botones/tamagochi.gif);
+}
+#enl_enciclopedia {
+        background-image: url(/images/botones/enciclopedia.gif);
+}
+#enl_descargas {
+        background-image: url(/images/botones/descargas.gif);
+}
+#enl_imagenes {
+        background-image: url(/images/botones/imagenes.gif);
+}
+#enl_contacto {
+        background-image: url(/images/botones/contacto.gif);
+}
+
+#cont_cab {
+    background-image: url(/images/foro_cont_cab.gif);
+    height: 20px;
+    width: 760px;   
+}
+#cont_fot {
+    background-image: url(/images/foro_cont_fot.gif);
+    height: 20px;
+    width: 760px;   
+}
+#cont_con {
+   
+    background-image: url(/images/cont_con.gif);
+    background-repeat: repeat;
+    width: 760px;
+}
+
+#cont_int_cab {
+
+    width: 740px;    
+}
+#cont_int_fot {
+
+
+    width: 740px;
+    
+}
+#cont_int_con {
+    width: 740px;    
+
+
+}
+
+#cont_cont {}
+
+
+
+span.cat_toptitles   {font-size: 10px;}
+h1.sidemenu {font-size: 10px;}
+ul.sidemenu a {font-size: 10px;}
