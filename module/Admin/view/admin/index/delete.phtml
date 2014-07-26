@@ -1,0 +1,21 @@
+<div class="w-section"></div>
+<div id="m-status" style="margin-bottom: 300px">
+	<h2 class="title">Eliminar Ítem</h2>
+	<div class="block">
+	    <div class="alert alert-danger">
+	      <div>¿Está seguro que desea borrar el siguiente ítem?</div>
+	      <div><br/>
+	      <table>
+	      <?php foreach($this->cols as $key => $value) : ?>
+	      <tr><td><b><?php echo $value['desc'] ?> </b></td><td> <?php echo $this->annotation_list($value['column'],$this->item->get($key)) ?></td></tr>
+	      <?php endforeach ?>
+	      </table>
+	      </div>
+	      <form id="activeform" method="POST" action="/admin/<?php echo $this->table ?>/delete/<?php echo $this->item->get('id') ?>">
+	      <input type="hidden" name="itemid" value="<?php echo $this->item->get('id') ?>"></input>
+	      </form>
+	      <div><br/><a href="/admin/<?php echo $this->table ?>" class="btn site">Cancelar</a> &nbsp;&nbsp; <a href="/admin/<?php echo $this->table ?>/delete/<?php echo $this->item->get('id') ?>" class="btn error site" id="send">Borrar</a></div>
+	    </div>
+	
+	</div>
+</div>

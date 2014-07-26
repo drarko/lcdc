@@ -1,0 +1,68 @@
+<?php
+    function limpiar($String)
+    {
+	$String = str_replace(array('á'),'a',$String);
+	$String = str_replace(array('é'),'e',$String);
+	$String = str_replace(array('í'),'i',$String);
+	$String = str_replace(array('ó'),'o',$String);
+	$String = str_replace(array('ú'),'u',$String);
+	$String = str_replace(array('ñ'),'n',$String);
+	$String = str_replace(array(' '),'-',$String);
+	return $String;
+     }
+?>		<section class="blog">
+			<div class="usual">
+				<ul class="idTabs"> 
+				  <?php foreach($this->notas as $key => $value) : ?>
+					<li><a id="li-<?php echo limpiar(strtolower($key)); ?>" href="#<?php echo limpiar(strtolower($key)); ?>"><?php echo strtoupper($key); ?></a></li> 
+				  <?php endforeach ?>
+				</ul>
+				<div class="lower"> 
+					<?php foreach($this->notas as $key => $value) : ?>
+					    <?php if((count($value) > 0)) : ?>
+					      <div id="<?php echo limpiar(strtolower($key)); ?>">
+							<span>BLOG - <?php echo strtoupper($key); ?></span>
+							<?php foreach($value as $nota) : ?>
+							    <a href="/nota/<?php echo $nota->getId(); ?>"><article class="seccion">
+								    <figure>
+									    <img src="<?php echo $nota->getFirstImg(); ?>"/>
+								    </figure>
+								    <div>
+									    <p class="left"><?php echo strtoupper($key); ?></p>
+									    <p class="right"><?php echo $nota->getFecha()->format("d/m/Y"); ?></p>
+								    </div>
+								    <h1 class="violeta"><?php echo $nota->getTitle(); ?></h1>
+						
+									    <?php echo $nota->getResumen(); ?>
+							    </article></a>
+							<?php endforeach ?>
+					      </div>
+					   <?php endif ?>
+					<?php endforeach ?>
+				</div>
+			</div>
+		</section>
+		<aside class="clearfix">
+			<div class="slider-seccion">
+		        <div class="flexslider carousel">
+		          <ul class="slides">
+			            <li>
+			            	<div class="title verde">NUEVO</div>
+			  	    	    <img src="img/slide.jpg">
+			  	    	    <p>La casa más sustentable del mundo</p>
+			  	    	</li>
+			  	    	<li>
+			  	    		<div class="title verde">NUEVO</div>
+			  	    	    <img src="img/slide02.jpg">
+			  	    	    <p>Texto largo de prueba, Texto largo de prueba, Texto largo de prueba, Texto largo de prueba</p>
+			  	    	</li>
+			  	    	<li>
+			  	    		<div class="title verde">NUEVO</div>
+			  	    	    <img src="img/slide03.jpg">
+			  	    	    <p>Participa!</p>
+			  	    	</li>
+		          	</ul>
+		        </div> 
+	        </div>    		
+		</aside>
+		<div class="clear"></div>

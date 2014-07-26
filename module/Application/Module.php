@@ -39,4 +39,17 @@ class Module
             ),
         );
     }
+    
+    public function getServiceConfig()
+    {    
+	return array(
+	    'factories' => array(
+		'Application\Service' => function ($sm) {
+		    $as = new Service\ApplicationService($sm);
+		    $as->init();
+		    return $as;
+		},
+	    ),    
+	);  
+    }        
 }

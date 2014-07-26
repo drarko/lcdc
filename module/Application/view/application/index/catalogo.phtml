@@ -1,0 +1,45 @@
+<?php
+    function limpiar($String)
+    {
+	$String = str_replace(array('á'),'a',$String);
+	$String = str_replace(array('é'),'e',$String);
+	$String = str_replace(array('í'),'i',$String);
+	$String = str_replace(array('ó'),'o',$String);
+	$String = str_replace(array('ú'),'u',$String);
+	$String = str_replace(array('ñ'),'n',$String);
+	$String = str_replace(array(' '),'-',$String);
+	return $String;
+     }
+?>
+      <aside class="catalogo-aside">
+            <ul class="responsive-accordion responsive-accordion-default bm-larger">
+	      <?php foreach($this->categorias as $key => $value) : ?>
+	          <li>
+	            <div class="responsive-accordion-head"><img src="/img/catalogo-<?php echo limpiar(strtolower($key)) ?>.png" alt="dormitorio"/><h5><?php echo strtoupper($key) ?></h5></div>
+	            <div class="responsive-accordion-panel">
+	              <p>
+			<?php if(isset($value['subcat'])) : ?>
+			<?php foreach($value['subcat'] as $subcat) :?>
+			    <a href="/catalogo/<?php echo $subcat->getId(); ?>"><?php echo $subcat->getName(); ?></a>
+	                <?php endforeach ?>
+	                <?php endif ?>
+	              </p>
+	            </div>
+	          </li>
+	     <?php endforeach ?>
+            </ul>
+		</aside>
+		<section class="catalogo-section">
+			<ul class="lista">
+			    <?php foreach($this->productos as $prod) : ?>
+				<li class="producto" id="producto-<?php echo $prod->getId(); ?>">
+					<img src="/<?php echo $prod->getFirstImg(); ?>" alt="image-1" />
+					<p class="precio">$<?php echo $prod->getPrecio(); ?></p>
+					<p class="item"><?php echo $prod->getName(); ?></p>
+					<p><?php echo $prod->getAutor(); ?></p>
+				</li>
+			     <?php endforeach ?>
+			</ul>			
+		</section>
+		<div class="clear"></div>
+		<div id="response"></div>

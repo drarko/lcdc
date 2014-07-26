@@ -12,7 +12,7 @@ class ControllerBase extends AbstractActionController
       public $view;
       public $identity;
       public $user;
-      
+      public $service;
       
       public function __construct()
       {
@@ -24,6 +24,14 @@ class ControllerBase extends AbstractActionController
       
       public function init()
       {
+
+	  $ns = substr(get_called_class(), 0, strpos(get_called_class(), "\\"));
+	  try {
+	    $this->service = $this->getServiceLocator()->get($ns.'\Service');
+	  } catch(\Exception $e) {
+	    $this->service = null;
+	  }
+	  
 	  $this->getIdentity();
 	  
 	  $this->view->messages = $this->flashmessenger()->getMessages();

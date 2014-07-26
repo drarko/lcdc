@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title>Administrador</title>
+	<meta name="description" content="kleith web site" />
+	<meta name="keywords" content="html, css, js, php" />
+        <!-- Le styles -->
+        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+			->prependStylesheet($this->basePath() . '/css/jquery-ui.css')
+			->prependStylesheet($this->basePath() . '/css/admin/image-picker.css')
+			->prependStylesheet($this->basePath() . '/css/prettyPhoto.css')
+                        ->prependStylesheet($this->basePath() . '/css/admin/colorpicker.css')
+			->prependStylesheet($this->basePath() . '/css/bootstrap.css')
+			->prependStylesheet($this->basePath() . '/css/admin/button.css') 
+                        ->prependStylesheet($this->basePath() . '/css/admin/layout.css')
+                        ->prependStylesheet($this->basePath() . '/css/admin/reset.css')
+                        ?>
+        <!-- Scripts -->
+        <?php echo $this->headScript()
+	    ->prependFile($this->basePath() . '/js/admin/app.js')        
+	    ->prependFile($this->basePath() . '/js/admin/masonry.min.js')
+	    ->prependFile($this->basePath() . '/js/admin/image-picker.min.js')
+	    ->prependFile($this->basePath() . '/js/jquery.ui.js')
+	    ->prependFile($this->basePath() . '/js/tinymce/tinymce.min.js')
+	    ->prependFile($this->basePath() . '/js/jquery.prettyPhoto.js')
+	    ->prependFile($this->basePath() . '/js/admin/colorpicker.js')
+            ->prependFile($this->basePath() . '/js/bootstrap.min.js')
+            ->prependFile($this->basePath() . '/js/jquery.min.js')
+            ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+            ->prependFile($this->basePath() . '/js/html5shiv.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+            ->prependFile($this->basePath() . '/js/admin/tablesorter.min.js')            
+        ; ?>
+        
+ <style>
+.ui-tooltip {
+padding: 10px 20px;
+color: black;
+background-color:white;
+width: 200px;
+text-align:center;
+border-radius: 20px;
+font: bold 14px "Helvetica Neue", Sans-Serif;
+text-transform: uppercase;
+box-shadow: 0 0 7px black;
+
+}
+</style>     
+</head>
+<body>
+<div id="container">
+	<div id="header">
+		<div class="w-header"></div>
+		<div class="w-menu">
+			<h1>Administrador de contenidos</h1>
+			<div class="buttons">
+				<a href="/" class="btn" target="_blank">Ir al sitio web</a>
+				<div class="btn-group">
+					<button class="btn">Cambiar contraseña</button>
+					<a href="/auth/login/logout" class="btn info">Salir</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="content">
+		<div class="w-menu">
+			<ul>
+							<li>
+					<a href="/admin">Listado</a>
+					<ul>
+					<?php foreach($this->menu as $item => $desc) : ?>
+						<li>
+							<a href="/admin/<?php echo $item ?>" ><?php echo $desc ?></a>
+						</li>
+					<?php endforeach ?>
+					  </ul>
+					  </li>
+						</ul>
+		</div>
+		<div class="w-content">
+		  <?php echo $this->content; ?>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<div id="footer">
+	</div>
+</div>
+</body>
+</html>

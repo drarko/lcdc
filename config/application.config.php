@@ -8,8 +8,10 @@ return array(
 	'Controller',
 	'Service',
 	'Entities',
+	'Annotations',  	
         'Auth',       
         'Application',  
+        'Admin',
     ),
 
     // These are various options for the listeners attached to the ModuleManager

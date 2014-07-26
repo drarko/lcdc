@@ -1,0 +1,37 @@
+<div class="w-section"></div>
+<div id="m-status" style="margin-bottom: 300px">
+
+	<h2 class="title">Listado</h2>
+	<div class="block">
+	
+	<table id="tablelist" class="full tablesorter">
+	<thead>
+	  <tr>
+	    <?php foreach($this->cols as $cols) : ?>
+	      <th class="header"><?php echo $cols['desc'] ;?></th>
+	    <?php endforeach ?>
+	      <th class="header">Editar / Borrar</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <tr>
+	    <?php foreach($this->list as $list) : ?>
+	      <tr>
+	      <?php foreach($this->cols as $key => $value) : ?>
+		<td><?php echo $this->annotation_list($value['column'],$list->get($key)) ?></td>
+	      <?php endforeach ?>
+	      <td><a href="/admin/<?php echo $this->table ?>/update/<?php echo $list->get('id')?>" class="btn site btn-sm">Editar</a> &nbsp;&nbsp; <a href="/admin/<?php echo $this->table ?>/delete/<?php echo $list->get('id')?>" class="btn error site btn-sm">Borrar</a></td>
+	      </tr>
+	    <?php endforeach ?>
+	  </tr>	
+	</tbody>
+	<tfoot>
+	  <tr>
+	    <td colspan="<?php echo count($this->cols)+1 ?>"><a href="/admin/<?php echo $this->table ?>/create" class="btn info">Nuevo</a></td>
+	  </tr>
+	</tfoot>	
+	</table>
+	</div>
+</div> 
+
+

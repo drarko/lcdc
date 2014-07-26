@@ -34,12 +34,7 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface
 		'Service\Entity' => function ($sm) {
 		    return new Entity($sm);
 		},
-	    ),
-	    'factories' => array(
-		'Service\Banco' => function ($sm) {
-		    return new Banco($sm);
-		},
-	    )	    
+	    ),    
 	);      
     }
 

@@ -7116,3 +7116,8 @@ td.visible-print {
     display: none !important;
   }
 }
+
+.maxsize {
+    max-width: 140px;
+    max-height: 140px;
+}

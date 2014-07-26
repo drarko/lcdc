@@ -1,0 +1,28 @@
+<div class="w-section"></div>
+<div id="m-status" style="margin-bottom: 300px">
+
+	<h2 class="title">Editar Ítem</h2>
+	<div class="block">
+	<form id="activeform" method="POST" action="/admin/<?php echo $this->table ?>/update/<?php echo $this->item->get('id') ?>" enctype="multipart/form-data">
+	<input type="hidden" name="itemid" value="<?php echo $this->item->get('id') ?>"></input>
+	<table id="tablelist" class="full tablesorter">
+	<tbody>
+	  <tr>
+	    <?php foreach($this->cols as $key => $cols) : ?>
+	      <tr>
+	      <td><b><?php echo $cols['desc'] ;?></b></td><td><?php echo $this->annotation_form($cols['column'],$this->item->get($key), $key) ?></td>
+	      </tr>
+	    <?php endforeach ?>
+	  </tr>	
+	</tbody>	
+	<tfoot>
+	  <tr>
+	    <td colspan="2"><a href="/admin/<?php echo $this->table ?>" class="btn error site">Cancelar</a>&nbsp;&nbsp;&nbsp;<a href="/admin/<?php echo $this->table ?>/update/<?php echo $this->item->get('id') ?>" class="btn site" id="send">Enviar</a></td>
+	  </tr>
+	</tfoor>
+	</table>
+	</form>
+	</div>
+</div> 
+
+

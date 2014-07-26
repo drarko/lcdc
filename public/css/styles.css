@@ -1,0 +1,932 @@
+@charset "UTF-8";
+/* CSS Document */
+
+*{margin:0; padding: 0; list-style: none; border: none; text-decoration: none; color:#414042;}
+
+body{
+    font-size: 13px; 
+    background-color: #ffffff; 
+    font-family: 'Raleway', sans-serif;
+    width: 100%; 
+    color:#414042;
+}
+
+.violeta{
+	color:#823080;
+}
+
+.bg-verde:hover{
+	background-color: #3EA8A3;
+}
+
+.clear{
+	clear: both;
+}
+
+.left{
+	float: left;
+}
+
+.right{
+	float: right;
+}
+
+.content{
+	max-width: 960px;
+	margin: 0 auto;
+	width: 100%; 
+}
+
+header{
+	width: 100%;
+	display: block;
+	position: relative;
+	margin: 4% 0 2% 0;
+	text-align: center;
+}
+
+header span{
+	width:100%;
+	border-top: 1px dotted #ccc;
+	border-bottom: 1px dotted #ccc;
+	padding: 0.5% 0;
+	display: inline-block;
+	margin-top: 2%;
+}
+
+header .logo{
+	float: left;
+}
+
+header nav{
+	width: 320px;
+	padding-top: 0.3%;
+	float: left;
+} 
+
+header nav ul li{
+	display: inline-block;
+	font-weight: 500;
+	font-size: 1.1em;
+	vertical-align: middle;
+}
+
+header nav ul li a{
+	padding: 2px 10px;
+	float: left;
+	font-size: 1em;
+}
+
+header nav li a:hover{
+	background-color:#823080;
+	color:#fff;
+}
+
+header .busqueda{
+	width: 140px;
+	float: left;
+}
+
+header .busqueda02{
+	border: solid 1.5px #010101;
+	height: 17px;
+	border-radius: 8px;
+	width: 100%;
+	padding: 0.8%;
+}
+
+header .busqueda02 input{
+	display: inline-block;
+	width: 75%;
+}
+
+header .busqueda02 .btn_buscar{
+	display: inline-block;
+	width: 20%;
+}
+
+.redes-sociales{
+	float: right;
+}
+
+.redes-sociales div{
+	background-image: url(../img/redes-sociales.png);
+	width: 23px;
+	height: 23px;
+	float: left;
+	margin-right: 5px;
+}
+
+.redes-sociales .face{
+	background-position: 0 0;
+}
+
+.redes-sociales .face:hover{
+	background-position: 0 23.5px;
+}
+
+.redes-sociales .twitter{
+	background-position: 115px 0;
+}
+
+.redes-sociales .twitter:hover{
+	background-position: 115px 23.5px;
+}
+
+.redes-sociales .pinterest{
+	background-position: 230px 0;
+}
+
+.redes-sociales .pinterest:hover{
+	background-position: 230px 23.5px;
+}
+
+.redes-sociales .pinterest{
+	background-position: 230px 0;
+}
+
+.redes-sociales .pinterest:hover{
+	background-position: 230px 23.5px;
+}
+
+.redes-sociales .tumblr{
+	background-position: 492px 0;
+}
+
+.redes-sociales .tumblr:hover{
+	background-position: 492px 23.5px;
+}
+
+.redes-sociales .instagram{
+	background-position: 607px 0;
+}
+
+.redes-sociales .instagram:hover{
+	background-position: 607px 23.5px;
+}
+
+/*footer*/
+footer{
+	text-align: center;
+	position: relative;
+	width: 100%;
+}
+footer span{
+	width:98%;
+	border-top: 1px dotted #ccc;
+	padding: 1% 0;
+	display: inline-block;
+	margin-top: 2%;
+}
+
+footer p{
+	float: left;
+	width: 25%;
+	text-align: left;
+}
+
+footer nav{
+	width: 50%;
+	float: left;
+}
+
+footer nav ul{
+	display: inline-block;
+}
+
+footer nav li{
+	display: inline-block;
+	line-height: 9px;
+}
+
+footer nav li a{
+	padding: 0 6px;
+	float: left;
+}
+
+footer nav li a:hover{
+	color:#823080;
+}
+/*end footer styles*/
+.title{
+	color: #fff;
+	font-weight: 500;
+	font-size: 1.1em;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	max-width: 110px;
+	padding-left: 10px;
+	background-repeat: no-repeat;
+	height: 25px;
+	line-height: 25px;
+}
+
+.lila{
+	background-image: url(../img/violeta.png);
+}
+
+.verde{
+	background-image: url(../img/verde.png);
+}
+
+.naranja{
+	background-image: url(../img/naranja.png);
+}
+
+.rosa{
+	background-image: url(../img/rosa.png);
+}
+
+section{
+	width: 75%;
+	float: left;
+	margin-right: 2%;
+	margin-top: 2%;
+	margin-bottom: 2%;
+}
+
+aside{
+	width: 22%;
+	float: left;
+	margin-top: 2%;
+}
+
+/*------------------- start nota -----------------*/
+.blog{
+	border-right: 1px solid #CFCDC2; 
+}
+
+.idTabs{
+	float: left;
+	width: 25%;
+	margin-left: 5%;
+	margin-bottom: 9%;
+}
+
+.idTabs li a{
+	font-weight: 700;
+	padding-bottom: 3%;
+	display: inline-block;
+	font-size:1.1em;
+}
+
+.tabs{
+	float: left;
+	width: 25%;
+	margin-left: 5%;
+	margin-bottom: 9%;
+}
+
+.tabs li a{
+	font-weight: 700;
+	padding-bottom: 3%;
+	display: inline-block;
+	font-size:1.1em;
+}
+
+.usual ul a:hover {
+  color:#81398A;
+  }
+.usual ul a.selected {
+  color:#81398A;
+}
+
+.lower{
+	float: left;
+	border-left: 1px solid #CFCDC2;
+	width: 65%; 
+	padding: 0 2% 2% 2%;
+}
+
+.lower .nota span{
+	float: left;
+	width: 100%;
+	margin-bottom: 3%;
+	font-size: 0.9em; 
+	margin-top: -6%;
+}
+
+.lower .nota figure{
+	width: 100%;
+	float: left;
+	margin-bottom: 3%;
+}
+
+.lower .nota figure img{
+	max-width: 468px;
+	width: 100%;
+}
+
+.lower .nota h1{
+	margin-bottom: 4%;
+	font-size: 2em;
+	font-weight: 500;
+}
+
+.lower .nota p{
+	margin-bottom: 4%;
+}
+
+/*------------------- end nota -----------------*/
+
+/*------------------- start seccion -----------------*/
+.lower a{
+	display: inline-block;
+}
+
+.lower a:hover{
+	background-color: #EFEFEF;
+}
+
+.lower span{
+	float: left;
+	width: 100%;
+	margin-bottom: 3%;
+	font-size: 0.9em; 
+}
+
+.lower .seccion{
+	float: left;
+	padding: 2% 2%  2% 0;
+	border-bottom: 1px dotted #ccc;
+}
+
+.lower .seccion div{
+	float: left;
+	width: 50%;
+}
+
+.lower .seccion h1{
+	margin-bottom: 4%;
+	font-size: 1.4em;
+	font-weight: 500;
+}
+
+.lower .seccion figure{
+	float: left;
+	width: 48%;
+	margin-right: 2%;
+}
+
+.lower .seccion figure img{
+	max-width: 225px;
+	width: 100%;
+}
+
+/*------------------- end seccion -----------------*/
+
+.contacto-mapa{
+	width: 100%;
+	margin-bottom: 4%;
+	float: left;
+}
+
+.contacto-mapa iframe {
+max-width: 100%;
+height: 30em;
+width: 100%; /*IE8 bug fix*/
+vertical-align: middle;}
+
+.contacto-fotos{
+	width: 100%;
+	float: left;
+}
+
+.contacto-fotos li{
+	float: left;
+	width: 31%;
+	margin-right: 3%;
+}
+
+.contacto-fotos li img{
+	max-width: 222px;
+	width: 100%;
+}
+
+.contacto-fotos li:last-child{
+	margin-right: 0;
+}
+
+.contacto-info{
+	width: 100%;
+	float: left;
+	position: relative;
+	padding-top: 20%;
+}
+
+.contacto-info p{
+	margin-bottom: 7%;
+}
+
+.contacto-info a:hover{
+	text-decoration: underline;
+}
+
+.titulo{
+	color:#fff;
+	font-weight: 700;
+	font-size: 14px;
+	height: 25px;
+	line-height: 25px;
+	padding: 0 2%;
+	display: inline-block;
+}
+
+.violeta02{
+	background-image: url(../img/violeta.png);
+	background-position: 0 0;
+	background-color: #81398A;
+}
+
+/*------------ index -------------*/
+.mapa h3{
+	width: 100%;
+	text-align: center;
+	color: #fff;
+	font-weight: 500;
+	font-size: 1.3em;
+	height: 30px;
+	line-height: 30px;
+}
+
+.mapa{
+	width: 97%;
+	float: left;
+	margin-bottom: 2%;
+	position: relative;
+	padding-left: 3%;
+	background-color: #248F88;
+}
+
+.mapa .row{
+	background-color: #3c3c3c;
+	float: left;
+	width: 100%;
+}
+
+.mapa .regalos{
+	background-image: url(../img/regalos.jpg);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	width: 15%;
+	float: left;
+}
+
+.mapa .dormitorio{
+	background-image: url(../img/dormitorio.jpg);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	width: 24.8%;
+	float: left;
+}
+
+.mapa .bano{
+	background-image: url(../img/bano.jpg);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	width: 16.8%;
+	float: left;
+}
+
+.mapa .ninos{
+	background-image: url(../img/ninos.jpg);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	width: 23.4%;
+	float: left;
+}
+
+.mapa .exterior{
+	background-image: url(../img/exterior.jpg);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	width: 18.7%;
+	float: left;
+	position: absolute;
+	top: 30px;
+	right: 0;
+}
+
+.mapa .cocina{
+	background-image: url(../img/cocina.jpg);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	width: 23.8%;
+	float: left;
+}
+
+.mapa .comedor{
+	background-image: url(../img/comedor.jpg);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	width: 30%;
+	float: left;
+}
+
+.mapa .living{
+	background-image: url(../img/living.jpg);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	width: 26.1%;
+	float: left;
+}
+
+.living:hover, .regalos:hover, .bano:hover, .ninos:hover, .cocina:hover, .comedor:hover{
+	background-position: 0 103%;
+}
+
+.exterior:hover, .dormitorio:hover{
+	background-position: 0 101%;
+}
+
+.regalos img, .dormitorio img, .bano img, .ninos img, .exterior img, .cocina img, .comedor img, .living img{
+	opacity: 0;
+	width: 100%;
+}
+
+.slider-home{
+	width: 60%;
+	margin-right: 2%;
+	float: left;
+}
+
+.banner01{
+	width: 38%;
+	float: left;
+	position: relative;
+}
+
+.banner01 img{
+	width: 100%;
+	height: 12em;
+}
+
+.banner01 p, .banner02 p, .banner03 p{
+	position: absolute; 
+	bottom: -1px; 
+	z-index: 9; 
+	left: 0; 
+	height: 50px; 
+	background-image: url(../img/bg_sombra.png); 
+	color: #fff; 
+	font-weight: 500; 
+	font-size: 1.2em; 
+	padding: 25px 5% 0 5%; 
+	line-height: 19px; 
+	width: 90%;
+}
+
+.banner02{
+	float: left;
+	width: 100%;
+	position: relative;
+	margin-bottom: 7%;
+}
+
+.banner02 img{
+	width: 100%;
+	height: 21em;
+}
+
+.banner03{
+	float: left;
+	width: 100%;
+	position: relative;
+}
+
+.banner03 img{
+	width: 100%;
+	height:12em;
+}
+/*------------ end index -------------*/
+
+
+/*--------catalogo------------*/
+.catalogo-section {
+	margin-right: 0;
+	margin-left: 2%;
+}
+
+.catalogo-aside{
+	margin-left: 10%;
+	width: 16%;
+	margin-left: 7%;
+}
+
+.catalogo-aside .responsive-accordion-head{
+    cursor: pointer;
+    width: 100%;
+    margin: 6% 0;
+}
+
+.catalogo-aside .responsive-accordion-head h5{
+	font-size: 1.3em;
+    color:#4D4D4F;
+    font-weight: 500; 
+    padding-left: 30px;
+}
+
+.catalogo-aside .responsive-accordion-head:hover{
+    text-decoration: underline;
+}
+
+.catalogo-aside .responsive-accordion li{
+    padding: 1% 0; 
+    width: 75%;
+    position: relative;
+}
+
+.catalogo-aside .responsive-accordion li img{
+	float: left;
+    width: 100%;
+    max-width: 22px;
+}
+
+.responsive-accordion-panel p{
+	width: 78%;
+	margin-left: 40%;
+	font-size: 1.2em;
+}
+
+.catalogo-section .lista{
+	width: 100%;
+	float: left;
+}
+
+.catalogo-section .lista li{
+	width: 110px;
+	height: 110px;
+	float: left;
+	position: relative;
+	margin: 0 10px 72px 0;
+}
+
+.catalogo-section .lista li img{
+  width: 110px;
+  height: 110px;
+}
+
+.catalogo-section .precio{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1em;
+  background-image: url(../img/catalogo-precio.png);
+  width: 53px;
+  height: 15px;
+  text-align: center;
+}
+
+.catalogo-section .item, #overlay .cuadro article h5{
+  font-size: 1.1em;
+  margin: 5px 0 5px 0;
+  line-height: 1.1em;
+  width: 100%;
+  font-weight: 700;
+}
+
+.catalogo-section p{
+  font-size: 0.9em; 
+}
+
+#overlay{
+	display:none; 
+	width: 100%; 
+	height: 100%; 
+	background-color: rgba(0,0,0,0.6); 
+	position: absolute; 
+	top: 0; 
+	left: 0;}
+#overlay .cuadro{
+	width: 530px;
+	height: 45%;
+	background-color: white; 
+	position: relative;
+	margin: 12% auto 0 auto;
+	padding:15px; 
+	z-index: 9;
+}
+#overlay .close{
+	font-size: 23px;
+	font-weight: 700; 
+	position: absolute; 
+	top: 1%; 
+	right: 2%; 
+	color: black; 
+	cursor: pointer;
+	z-index: 9;
+}
+
+#overlay .cuadro article{
+	width: 47%;
+	margin-right: 3%;
+	float: left;
+}
+
+#overlay .cuadro article:last-child{
+	margin-right: 0;
+}
+
+#overlay .cuadro article h5{
+
+}
+
+#overlay .cuadro article .precio{
+	float: left;
+	margin: 10px 0;
+	color: #81398A;
+	font-weight: 700;
+	font-size: 1.1em;
+	width: 100%;
+}
+
+#overlay .cuadro article .item{
+	width: 100%;
+	float: left;
+	border-top: 1px solid #CFCDC2;
+	padding: 10px 0;
+}
+
+
+
+/*--------end catalogo -------*/
+
+@media only screen and (max-width:960px) {
+	.home{
+		width: 96%;
+		margin: 0 2%;
+	}
+
+	.aside-home{
+		margin-right: 2%;
+		margin-left: 2%;
+		width: 96%;
+		margin-top: 3%;
+	}
+
+	.banner02{
+		width: 49%;
+		margin-right: 2%;
+	}
+
+	.banner03{
+		width: 49%;
+	}
+
+	.banner03 img{
+	height:21em;
+	}
+}
+
+@media only screen and (max-width:690px) {
+	body{
+		font-size: 12px;
+	}
+
+	section{
+		margin-right: 2%;
+		margin-left: 2%;
+		width: 96%;
+	}
+
+	aside{
+		margin-right: 2%;
+		margin-left: 2%;
+		width: 96%;
+		margin-top: 3%;
+	}
+
+	.idTabs {
+	float: left;
+	width: 28%;
+	margin-left: 2%;
+	}
+
+	.contacto-info p{
+		font-size: 14px;
+	}
+
+	header .redes-sociales{
+		float: left;
+		margin-left: 3%;
+	}
+
+	#overlay .cuadro{
+	}
+}
+
+@media only screen and (max-width:640px) {
+	footer p{
+		width: 96%;
+		margin: 2%;
+		text-align: center;
+	}
+
+	footer nav{
+		width: 100%;
+		margin-bottom: 2%;
+	}
+
+	footer .redes-sociales{
+		margin-right: 37%;
+	}
+
+	.banner01 p, .banner02 p, .banner03 p {
+		font-size: 1em;
+	}
+
+	.banner03 img, .banner02 img{
+	height:15em;
+	}
+
+}
+
+@media only screen and (max-width:480px) {
+	.blog{
+		border-right: none;
+	}
+
+	.idTabs {
+	float: left;
+	width: 98%;
+	margin-left: 2%;
+	}
+
+	.lower{
+		width: 96%;
+		border-left: none;
+	}
+
+	header .logo{
+		float: none;
+		text-align: center;
+		max-width: 300px;
+	}
+
+	header nav{
+		float: none;
+		margin: 0 auto;
+	}
+
+	header nav{
+		width: 300px;
+	}
+
+	header .busqueda{
+		margin-left: 2%;
+	}
+
+	header .redes-sociales{
+		float: right;
+	}
+
+	footer .redes-sociales{
+		margin-right: 32%;
+	}
+
+	.slider-home{
+		width: 100%;
+		margin-right: 0;
+	}
+
+	.banner01{
+		width: 100%;
+		margin-top: 2%;
+	}
+
+	.banner01 img{
+		height: inherit;
+	}
+}
+
+@media only screen and (max-width:320px) {
+	.lower .seccion figure {
+		width: 100%;
+		margin-right: 0;
+	}
+
+	.lower .seccion figure img{
+		max-width: 300px;
+	}
+
+	.lower .seccion div{
+		width: 100%;
+	}
+
+	footer .redes-sociales{
+		margin-right: 26%;
+	}
+
+	.banner01 p, .banner02 p, .banner03 p {
+		font-size: 0.8em;
+	}
+
+	.banner03 img, .banner02 img{
+	height:10em;
+	}
+}
+

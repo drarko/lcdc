@@ -1,0 +1,39 @@
+<?php
+    function limpiar($String)
+    {
+	$String = str_replace(array('á'),'a',$String);
+	$String = str_replace(array('é'),'e',$String);
+	$String = str_replace(array('í'),'i',$String);
+	$String = str_replace(array('ó'),'o',$String);
+	$String = str_replace(array('ú'),'u',$String);
+	$String = str_replace(array('ñ'),'n',$String);
+	return $String;
+     }
+?>		<section class="blog">
+			<div class="usual">
+				<ul class="tabs"> 
+				  <?php foreach($this->secc as $value) : ?>
+					<li><a href="/blog#<?php echo limpiar(strtolower($value->getName())); ?>"><?php echo strtoupper($value->getName()); ?></a></li> 
+				  <?php endforeach ?>
+				</ul>
+				<div class="lower"> 
+				      <div id="<?php echo limpiar(strtolower($this->nota->getSeccion()->getName())); ?>">
+							<span>BLOG - <?php echo strtoupper($this->nota->getSeccion()->getName()); ?></span>
+							    <article class="nota">
+								    <figure>
+									    <img src="/<?php echo $this->nota->getFirstImg(); ?>"/>
+									    <p class="left"><?php echo strtoupper($this->nota->getSeccion()->getName()); ?></p>
+									    <p class="right"><?php echo $this->nota->getFecha()->format("d/m/Y"); ?></p>
+								    </figure>
+
+								    <h1 class="violeta"><?php echo $this->nota->getTitle(); ?></h1>
+						
+									    <?php echo $this->nota->getContent(); ?>
+							    </article>
+				      </div>
+				</div>
+			</div>
+		</section>
+		<aside>		
+		</aside>
+		<div class="clear"></div>
