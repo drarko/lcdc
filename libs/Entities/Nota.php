@@ -12,6 +12,7 @@ use Entities\Entity;
 /** @ORM\Entity
   * @ORM\Table("Nota")
   * @Custom\Description(value="Administrar Notas del Blog")
+  * @Custom\ABML(alta=true,baja=true,modificacion=true,lista=true)  
   *
 */
 

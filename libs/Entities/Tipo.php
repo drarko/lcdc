@@ -12,6 +12,7 @@ use Entities\Entity;
 /** @ORM\Entity
   * @ORM\Table("BlogTipo")
   * @Custom\Description(value="Administrar Secciones del Blog")  
+  * @Custom\ABML(alta=true,baja=true,modificacion=true,lista=true)  
   *
 */
 

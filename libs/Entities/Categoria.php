@@ -12,6 +12,8 @@ use Entities\Entity;
 /** @ORM\Entity
   * @ORM\Table("Categoria")
   * @Custom\Description(value="Administrar Categorias")
+  * @Custom\ABML(alta=true,baja=true,modificacion=true,lista=true)
+  * @Custom\Filter(filter="notnull",field="padre")
   *
 */
 
@@ -34,6 +36,7 @@ class Categoria extends Entity  {
     * @ORM\ManyToOne(targetEntity="Categoria", cascade={"persist"}) 
     * @Custom\Description(value="Categoria padre")
     * @Custom\Select
+    * @Custom\Filter(filter="null",field="padre")
     */  
     protected $padre;
 	

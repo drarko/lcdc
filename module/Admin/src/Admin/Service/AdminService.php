@@ -65,11 +65,14 @@ class AdminService extends Entity
       $annotation = $this->reader->getPropertyAnnotation($property, "Annotations\\Date");
       if($annotation != null) return array("type" => $annotation->getType());
       
+      $annotation = $this->reader->getPropertyAnnotation($property, "Annotations\\ReadOnly");
+      if($annotation != null) return array("type" => $annotation->getType());
+      
       $annotation = $this->reader->getPropertyAnnotation($property, "Annotations\\Gallery");
       if($annotation != null) {
 	$entity = $this->entity;
 	$this->entity = $relation;
-	$datos = $this->getList();
+	$datos = $this->getAllList();
 	$main = $this->getMainField();
 	$this->entity = $entity;
 	return array("type" => $annotation->getType(), "list" => $datos, "main" => $main);
@@ -77,9 +80,14 @@ class AdminService extends Entity
       
       $annotation = $this->reader->getPropertyAnnotation($property, "Annotations\\Select");
       if($annotation != null) {
+	$filter = $this->reader->getPropertyAnnotation($property, "Annotations\\Filter");
 	$entity = $this->entity;
 	$this->entity = $relation;
-	$datos = $this->getList();
+	if($filter == null) {
+	  $datos = $this->getAllList();
+	} else {
+	  $datos = $filter->getResults($this->em->getRepository($this->entity));	
+	}
 	$main = $this->getMainField();
 	$this->entity = $entity;
 	return array("type" => $annotation->getType(), "list" => $datos, "main" => $main);
@@ -87,9 +95,14 @@ class AdminService extends Entity
 
       $annotation = $this->reader->getPropertyAnnotation($property, "Annotations\\SelectTree");
       if($annotation != null) {
+	$filter = $this->reader->getPropertyAnnotation($property, "Annotations\\Filter");
 	$entity = $this->entity;
 	$this->entity = $relation;
-	$datos = $this->getList();
+	if($filter == null) {
+	  $datos = $this->getAllList();
+	} else {
+	  $datos = $filter->getResults($this->em->getRepository($this->entity));	
+	}
 	$main = $this->getMainField();
 	$this->entity = $entity;
 	return array("type" => $annotation->getType(), "list" => $datos, "main" => $main);
@@ -142,9 +155,27 @@ class AdminService extends Entity
       return $cols;
     }
     
+    public function getAllList()
+    {
+	return $this->em->getRepository($this->entity)->findAll();
+    }
+    
     public function getList()
     {
-      return $this->em->getRepository($this->entity)->findAll();
+      $permisos = array();
+      $metadata = $this->annotationService->getClassMetadata($this->entity);
+      $class = $metadata->getReflectionClass();
+      $abml = $this->reader->getClassAnnotation($class, "Annotations\\ABML");
+      if($abml != null) {
+	$alta = $abml->getAlta();
+	$baja = $abml->getBaja();
+	$lista = $abml->getLista();
+	$modificacion = $abml->getModificacion();
+	$permisos = array("alta" => $alta,"baja" => $baja,"modificacion" => $modificacion, "lista" => $lista);
+      }
+      $filter = $this->reader->getClassAnnotation($class, "Annotations\\Filter");
+      if($filter == null) return array($this->em->getRepository($this->entity)->findAll(),$permisos);
+      return array($filter->getResults($this->em->getRepository($this->entity)),$permisos);
     }
     
     public function getItem($id)

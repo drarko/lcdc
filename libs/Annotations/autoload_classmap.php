@@ -4,5 +4,6 @@ return array(
   'Annotations\CustomAnnotation'                         => __DIR__ . '/CustomAnnotation.php',
   'Annotations\Description'                  		 => __DIR__ . '/Description.php',
   
-  'Annotations\Service'                  		 => __DIR__ . '/Service/Service.php',  
+  'Annotations\Service'                  		 => __DIR__ . '/Service/Service.php',
+  'Annotations\Doctrine\Repository'			 => __DIR__ . '/Doctrine/Repository.php',  
 );

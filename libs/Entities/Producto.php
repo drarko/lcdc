@@ -12,6 +12,7 @@ use Entities\Entity;
 /** @ORM\Entity
   * @ORM\Table("Producto")
   * @Custom\Description(value="Administrar Productos")
+  * @Custom\ABML(alta=true,baja=true,modificacion=true,lista=true)  
   *
 */
 

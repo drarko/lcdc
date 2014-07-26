@@ -63,9 +63,10 @@ class IndexController extends ControllerPublic
     
     public function listAction()
     {
-      $list = $this->service->getList();
+      list($list,$perm) = $this->service->getList();
       $cols = $this->service->getColumnInfo();
       
+      $this->view->setVariable('perm',$perm);
       $this->view->setVariable('list',$list);
       $this->view->setVariable('cols',$cols);
       

@@ -32,7 +32,9 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface
 	return array(
 	    'factories' => array(
 		'Annotations\Service' => function ($sm) {
-		    return new Service($sm);
+		    $as = new Service($sm);
+		    $as->init();
+		    return $as;
 		},
 	    ),    
 	);  

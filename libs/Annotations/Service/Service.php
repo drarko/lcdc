@@ -8,6 +8,11 @@ use Service\Entity;
 
 class Service extends Entity
 {
+    public function init()
+    {
+      $this->em->getConfiguration()->setDefaultRepositoryClassName('Annotations\Doctrine\Repository');
+    }
+    
     public function getAllMetadataClass()
     {
       $meta = $this->em->getMetadataFactory()->getAllMetadata();

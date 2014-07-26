@@ -12,6 +12,7 @@ use Entities\Entity;
 /** @ORM\Entity
   * @ORM\Table("Imagen")
   * @Custom\Description(value="Administrar Imagenes")
+  * @Custom\ABML(alta=true,baja=true,modificacion=true,lista=true)  
   *
 */
 
@@ -24,7 +25,7 @@ class Imagen extends Entity  {
     protected $id;
 
     /** @ORM\Column(type="string") 
-     *  @Custom\Description(value="Descripción")    
+     *  @Custom\Description(value="Nombre")    
      *  @Custom\TextField
      */
     protected $name;

@@ -14,26 +14,13 @@
 			<div class="contacto-info">
 					<div class="title lila">CONTACTO</div>
 
-					<p>Tel: (011) 4543-7910
-					Freire 3100, esquina Iberá. Coghlan,
-					Ciudad Autónoma de Buenos Aires</p>
+					<?php echo $this->contacto->getValue() ?>
 
-					<p><a href="mailto:lacasadecosas@yahoo.com.ar">lacasadecosas@yahoo.com.ar</a></p>
+					<p><a href="mailto:<?php echo str_replace("</p>","",str_replace("<p>","",$this->email->getValue())) ?>"><?php echo $this->email->getValue() ?></a></p>
 
-					<p>Abierto de lunes a sábados 
-					de 9:00 a 20:00 hs.</p>
-
-					<p><strong>Transportes que te acercan:</strong></p>
-
-					<p>- Líneas de colectivos -<br>
-					19, 29, 41, 67, 76, 107, 130,
-					151, 169, 175.</p>
-
-					</p>- Subte D - <br>
-					Estación Congreso + 10 cuadras</p>
-
-					<p>- Tren Mitre -<br> 
-					Estación Coghlan + 10 cuadras</p>
+					<?php echo $this->horario->getValue() ?>
+					
+					<?php echo $this->transporte->getValue() ?>
 			</div>
 		</aside>
 		<div class="clear"></div>

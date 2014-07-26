@@ -67,11 +67,27 @@ class ApplicationService extends Entity
     {
 	$cat = $this->em->getRepository('Entities\Categoria')->findOneById($cat);
 	if($cat != null) {
-	    return $this->em->getRepository('Entities\Producto')->findByCategoria($cat);
+	    $result1 = $this->em->getRepository('Entities\Producto')->findByCategoria($cat);
+	    $cats = $this->em->getRepository('Entities\Categoria')->findOneByPadre($cat);
+	    $result2 = $this->em->getRepository('Entities\Producto')->findBy(array("destacado" => true, "categoria" => array($cats)));
+	    $result = $result1;
+	    foreach($result2 as $res2) {
+	      $insert = true;
+	      foreach($result as $res) {
+		if($res->getId() == $res2->getId()) {
+		   $insert = false;
+		}
+	      }
+	      if($insert) $result[] = $res2;
+	    }
 	}
 	return $this->em->getRepository('Entities\Producto')->findBy(array("destacado" => true));
     }
-
+    public function getConfig($name)
+    {
+      return $this->em->getRepository('Entities\Config')->findOneByName($name);
+    }
+    
     public function getProducto($id)
     {
 	return $this->em->getRepository('Entities\Producto')->findOneById($id);

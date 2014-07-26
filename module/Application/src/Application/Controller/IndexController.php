@@ -57,6 +57,7 @@ class IndexController extends ControllerPublic
     }
     public function catalogoAction()
     {
+      $this->view->setVariable('catid',$this->id);
       $this->view->setVariable('categorias',$this->service->getCategorias());
       $this->view->setVariable('productos', $this->service->getProductos($this->id));
       $this->view->setTemplate('application/index/catalogo.phtml');
@@ -85,19 +86,12 @@ class IndexController extends ControllerPublic
 
     public function localAction()
     {
+      $this->view->setVariable('contacto',$this->service->getConfig('contacto'));
+      $this->view->setVariable('email',$this->service->getConfig('email'));
+      $this->view->setVariable('horario',$this->service->getConfig('horario'));
+      $this->view->setVariable('transporte',$this->service->getConfig('transporte'));
       $this->view->setTemplate('application/index/local.phtml');
       return $this->view;      
     }
 
-    public function contactoAction()
-    {
-      $this->layout()->setVariable('view_gallery',false);
-      $this->view->setVariable('exito',null);
-      if($this->getRequest()->isPost()) {
-	    $this->view->setVariable('exito',true);
-      }
-      
-      $this->view->setTemplate('application/index/contacto.phtml');
-      return $this->view;    
-    }
 }

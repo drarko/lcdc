@@ -10,13 +10,29 @@
 	$String = str_replace(array(' '),'-',$String);
 	return $String;
      }
+     
+     $active = false;
+     foreach($this->categorias as $cat) {
+      if($this->catid == $cat['datos']->getId()) {
+	$active = $cat['datos']->getId();
+      } else {
+	if(isset($cat['subcat'])) {
+	  $id = $cat['datos']->getId();
+	  foreach($cat['subcat'] as $subcat) {
+	    if($this->catid == $subcat->getId()) {
+	      $active = $id;
+	    }
+	  }
+	}
+      }
+     }
 ?>
       <aside class="catalogo-aside">
             <ul class="responsive-accordion responsive-accordion-default bm-larger">
 	      <?php foreach($this->categorias as $key => $value) : ?>
 	          <li>
-	            <div class="responsive-accordion-head"><img src="/img/catalogo-<?php echo limpiar(strtolower($key)) ?>.png" alt="dormitorio"/><h5><?php echo strtoupper($key) ?></h5></div>
-	            <div class="responsive-accordion-panel">
+	            <div class="responsive-accordion-head <?php if($active == $value['datos']->getId()) echo "active" ?>"><img src="/img/catalogo-<?php echo limpiar(strtolower($key)) ?>.png" alt="dormitorio"/><h5><?php echo strtoupper($key) ?></h5></div>
+	            <div class="responsive-accordion-panel <?php if($active == $value['datos']->getId()) echo "active" ?>">
 	              <p>
 			<?php if(isset($value['subcat'])) : ?>
 			<?php foreach($value['subcat'] as $subcat) :?>
