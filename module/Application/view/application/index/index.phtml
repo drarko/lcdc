@@ -33,37 +33,43 @@
 			<div class="slider-home">
 				<div class="flexslider carousel">
 		          <ul class="slides">
-			            <li>
-			            	<div class="title naranja">DISEÑO</div>
-			  	    	    <img src="/img/slide-home.jpg">
-			  	    	</li>
-			  	    	<li>
-			  	    		<div class="title naranja">DISEÑO</div>
-			  	    	    <img src="/img/slide-home.jpg">
-			  	    	</li>
-			  	    	<li>
-			  	    		<div class="title naranja">DISEÑO</div>
-			  	    	    <img src="/img/slide-home.jpg">
-			  	    	</li>
+					<?php foreach($this->slider->getImgs() as $img) : ?>
+					    <li>
+						  <div class="title naranja" style="background-color: <?php echo $this->slider->getColor();?>"><?php echo $this->slider->getTitulo(); ?></div>
+						  <img src="/<?php echo $img->getUri(); ?>">
+					    </li>
+			  	    	<?php endforeach ?>
 		          	</ul>
 		        </div>
 	        </div>
 	        <div class="banner01">
-	        	<div class="title lila">CONCURSO</div>
-	        	<img src="/img/ejemplo02.jpg">
-	        	<p>Participá en facebook y ganate un juego de tazas</p>
+			  <?php foreach($this->bann01 as $banner) : ?>
+			      <li>
+				    <div class="title naranja" style="background-color: <?php echo $banner->getColor();?>"><?php echo $banner->getTitulo(); ?></div>
+				    <img src="/<?php echo $banner->getFirstImg(); ?>">
+				    <p><?php echo $banner->getTexto(); ?></p>
+			      </li>
+			  <?php endforeach ?>		
 	       	</div> 
 		</section>
 		<aside class="aside-home">
 			<div class="banner02">
-				<div class="title verde">NUEVO</div>
-	        	<img src="/img/ejemplo03.jpg">
-	        	<p>Participá en facebook y ganate un juego de tazas</p>
+			  <?php foreach($this->bann02 as $banner) : ?>
+			      <li>
+				    <div class="title naranja" style="background-color: <?php echo $banner->getColor();?>"><?php echo $banner->getTitulo(); ?></div>
+				    <img src="/<?php echo $banner->getFirstImg(); ?>">
+				    <p><?php echo $banner->getTexto(); ?></p>
+			      </li>
+			  <?php endforeach ?>
 	       	</div>
 	       	<div class="banner03">
-	       		<div class="title naranja">DISEÑO</div>
-	        	<img src="/img/ejemplo01.jpg">
-	        	<p>Participá en facebook y ganate un juego de tazas</p>
+			  <?php foreach($this->bann03 as $banner) : ?>
+			      <li>
+				    <div class="title naranja" style="background-color: <?php echo $banner->getColor();?>"><?php echo $banner->getTitulo(); ?></div>
+				    <img src="/<?php echo $banner->getFirstImg(); ?>">
+				    <p><?php echo $banner->getTexto(); ?></p>
+			      </li>
+			  <?php endforeach ?>
 	       	</div>  
 		</aside>
 		<div class="clear"></div>

@@ -3,42 +3,10 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Auth\Controller\Login' => 'Auth\Controller\LoginController',
-            'Auth\Controller\Facebook' => 'Auth\Controller\FacebookController',
-            'Auth\Controller\Twitter' => 'Auth\Controller\TwitterController',                        
         ),
     ),
     'router' => array(
         'routes' => array(
-	    'auth_twitter' => array(
-                'type'    => 'Literal',
-                'options' => array(
-                    // Change this to something specific to your module
-                    'route'    => '/auth/twitter',
-                    'defaults' => array(
-                        // Change this value to reflect the namespace in which
-                        // the controllers for your module are found
-                        '__NAMESPACE__' => 'Auth\Controller',
-                        'controller'    => 'Twitter',
-                        'action'        => 'login',
-                    ),
-                ),
-                'may_terminate' => true,
-	    ),
-	    'auth_facebook' => array(
-                'type'    => 'Literal',
-                'options' => array(
-                    // Change this to something specific to your module
-                    'route'    => '/auth/facebook',
-                    'defaults' => array(
-                        // Change this value to reflect the namespace in which
-                        // the controllers for your module are found
-                        '__NAMESPACE__' => 'Auth\Controller',
-                        'controller'    => 'Facebook',
-                        'action'        => 'login',
-                    ),
-                ),
-                'may_terminate' => true,
-	    ),
             'auth' => array(
                 'type'    => 'Literal',
                 'options' => array(
@@ -74,7 +42,7 @@ return array(
             ),
         ),
     ),
-    'view_manager' => array(
+    'view_manager' => array(   
         'template_path_stack' => array(
             'Auth' => __DIR__ . '/../view',
         ),
@@ -83,11 +51,11 @@ return array(
         'authentication' => array(
             'orm_default' => array(
                 'object_manager' => 'Doctrine\ORM\EntityManager',
-                'identity_class' => 'Entities\Usuario\Usuario',
+                'identity_class' => 'Entities\Usuario',
                 'identity_property' => 'usuario',
                 'credential_property' => 'clave',
-                'credential_callable' => function(Entities\Usuario\Usuario $user, $passwordGiven) {
-                    return ($user->getPassword() == sha1($passwordGiven));
+                'credential_callable' => function(Entities\Usuario $user, $passwordGiven) {
+                    return ($user->get('clave') == sha1($passwordGiven));
                 },
             ),
         ),

@@ -28,24 +28,23 @@ class IndexController extends ControllerPublic
     
     public function indexAction()
     {
-
+	$this->view->setVariable('bann01',$this->service->getBanner('HOME-01'));
+	$this->view->setVariable('bann02',$this->service->getBanner('HOME-02'));
+	$this->view->setVariable('bann03',$this->service->getBanner('HOME-03'));
+	$this->view->setVariable('slider',$this->service->getSlider('home'));
+	return $this->view;
     }
     
     public function infoAction()
     {
       $this->id = $this->params()->fromRoute('id');
-      $item = $this->service->getContent($this->slug);
-      if($item != null) {
-	$this->view->setVariable('html' , $item->getContent());
-	$this->view->setTemplate('application/index/info.phtml');
-	return $this->view;
-      } else {
 	if(in_array($this->slug,array("blog","nota","catalogo","local","producto"))) {
 	  return $this->forward()->dispatch('Application\Controller\Index', array('action' => $this->slug, 'slug' => $this->slug, 'id' => $this->id));
+	} else if(in_array($this->slug,array("auth"))) {
+	  return $this->forward()->dispatch('Auth\Controller\Login', array('action' => "login"));
 	} else {
-	  return $this->redirect()->toRoute('/index')->setStatusCode('301');
+	  return $this->redirect()->toUrl('/')->setStatusCode('301');
 	}
-      }
     }
     
     public function productoAction()
@@ -67,7 +66,7 @@ class IndexController extends ControllerPublic
     public function blogAction()
     {
       $blog = $this->service->getBlogList();
-      
+      $this->view->setVariable('banner',$this->service->getBanner('BLOG'));
       $this->view->setVariable('notas',$blog);
       $this->view->setTemplate('application/index/blog.phtml');
       return $this->view;      

@@ -58,7 +58,7 @@ class Producto extends Entity  {
         
     /**
     * @ORM\ManyToMany(targetEntity="Imagen", cascade={"persist"})
-    * @ORM\JoinTable(name="ImagenLote",
+    * @ORM\JoinTable(name="ProductoImagenes",
     *      joinColumns={@ORM\JoinColumn(name="lote_id", referencedColumnName="id")},
     *      inverseJoinColumns={@ORM\JoinColumn(name="imagen_id", referencedColumnName="id")}
     *      )

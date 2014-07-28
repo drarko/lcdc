@@ -12,9 +12,9 @@ namespace Admin\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
-use Controller\ControllerPublic;
+use Controller\ControllerPrivate;
 
-class IndexController extends ControllerPublic
+class IndexController extends ControllerPrivate
 {
     public $menu;
     

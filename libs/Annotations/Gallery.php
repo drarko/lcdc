@@ -6,7 +6,8 @@ namespace Annotations;
 class Gallery extends CustomAnnotation 
 {
      public $type = "Gallery";
-
+     public $limit = 0;
+     
      public function renderList($data) 
      {
 	$imgs = $data->toArray();
@@ -26,7 +27,12 @@ class Gallery extends CustomAnnotation
 	    $imgsIds[] = $i->getId(); 
 	  }
 	}
-	$result = '<select name="'.$property.'[]" multiple="multiple" class="gallery image-picker show-html masonry"><option value=""></option>';
+
+	if($this->data['limit'] != 0) {
+	  $result = '<select name="'.$property.'[]" class="gallery image-picker show-html masonry"><option value=""></option>';
+	} else {
+	  $result = '<select name="'.$property.'[]" multiple="multiple" class="gallery image-picker show-html masonry"><option value=""></option>';
+	}
 	foreach($this->data['list'] as $elm) {
 	  $result = $result . '<option data-img-label="'.$elm->getName().'" data-img-src="/'.$elm->get($this->data['main']).'" value="'.$elm->getId().'" '.((($data != "")&&(in_array($elm->get('id'),$imgsIds)))?"selected":"").'>'.$elm->getName().'</option>';
 	}

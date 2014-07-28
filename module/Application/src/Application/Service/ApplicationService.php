@@ -92,6 +92,19 @@ class ApplicationService extends Entity
     {
 	return $this->em->getRepository('Entities\Producto')->findOneById($id);
     }    
+    
+    public function getSlider($name)
+    {
+	return $this->em->getRepository('Entities\Slider')->findOneByName($name);
+    }
+    
+    public function getBanner($tipo)
+    {
+	$tipo = $this->em->getRepository('Entities\BannerTipo')->findOneByName($tipo);
+	$result = $this->em->getRepository('Entities\Banner')->findByTipo($tipo);
+	if(!is_array($result)) return array($result);
+	return $result;
+    }    
 } 
 
  

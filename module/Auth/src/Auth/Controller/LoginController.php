@@ -16,6 +16,12 @@ class LoginController extends ControllerPublic
     protected $storage;
     protected $authservice;
     
+    public function init()
+    {
+      parent::init();
+      $this->layout()->setVariable('menu',array());
+    }
+    
     public function getAuthService()
     {
         if (! $this->authservice) {
@@ -58,7 +64,7 @@ class LoginController extends ControllerPublic
               $uri = $this->getRequest()->getUri()->getPath();
               if($uri == $route)
               {
-		$route = "/";
+		$route = "/admin";
 	      }
 	      return $this->redirect()->toUrl($route);
 
@@ -83,13 +89,6 @@ class LoginController extends ControllerPublic
                 }
 
                 if ($result->isValid()) {
-                    //check if it has rememberMe :
-                    if ($request->getPost('rememberme') == 1 ) {
-                        $this->getSessionStorage()
-                             ->setRememberMe(1);
-                        //set storage again 
-                        $this->getAuthService()->setStorage($this->getSessionStorage());
-                    }
                     
                     $this->getAuthService()->getStorage()->write($result->getIdentity());
                     
@@ -101,7 +100,7 @@ class LoginController extends ControllerPublic
               $uri = $this->getRequest()->getUri()->getPath();
               if($uri == $route)
               {
-		$route = "/";
+		$route = "/admin";
 	      }		    
                     return $this->redirect()->toUrl($route);
                 }
@@ -137,6 +136,6 @@ class LoginController extends ControllerPublic
     
     public function successAction()
     {
-        return $this->redirect()->toUrl('/');
+        return $this->redirect()->toUrl('/admin');
     }
 }

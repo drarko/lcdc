@@ -18,17 +18,6 @@ class LoginForm extends Form
 	
         // we want to ignore the name passed
         parent::__construct('login');
-        $this->setAttribute('method', 'post');
-        $this->add(array(
-	  'type' => 'Zend\Form\Element\Csrf',
-	  'name' => 'csrf',
-	  'options' => array(
-	      'csrf_options' => array(
-                     'timeout' => 600
-             )
-     )
- ));        
-       
         
         $this->add(array(
             'name' => 'username',
@@ -48,17 +37,6 @@ class LoginForm extends Form
                 'label' => 'Contraseña: ',
             ),
         ));
-   
-       
-
-       $this->add(array(
-	  'type' => 'Zend\Form\Element\Checkbox',
-	  'name' => 'rememberme',
-	
-	  'options' => array(
-	      'label' => 'Recordarme?: ',
-	  ),
-       ));
         
         $this->add(array(
             'name' => 'submit',
@@ -71,20 +49,7 @@ class LoginForm extends Form
            
 
             $inputFilter = new InputFilter();
-            $factory     = new InputFactory();
-
-            $inputFilter->add($factory->createInput(array(
-                'name'     => 'csrf',
-                'required' => true,
-                
-                'validators' => array(
-                    array(
-			'name'    => 'Csrf',
-			),
-                   
-                    
-                ),
-            ))); 	 
+            $factory     = new InputFactory();	 
             
             $inputFilter->add($factory->createInput(array(
                 'name'     => 'username',

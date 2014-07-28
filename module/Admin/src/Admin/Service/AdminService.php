@@ -75,7 +75,7 @@ class AdminService extends Entity
 	$datos = $this->getAllList();
 	$main = $this->getMainField();
 	$this->entity = $entity;
-	return array("type" => $annotation->getType(), "list" => $datos, "main" => $main);
+	return array("type" => $annotation->getType(), "list" => $datos, "main" => $main, "limit" => $annotation->getLimit());
       }
       
       $annotation = $this->reader->getPropertyAnnotation($property, "Annotations\\Select");

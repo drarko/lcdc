@@ -10,13 +10,13 @@ use Annotations as Custom;
 use Entities\Entity;
 
 /** @ORM\Entity
-  * @ORM\Table("Nota")
-  * @Custom\Description(value="Administrar Notas del Blog")
-  * @Custom\ABML(alta=true,baja=true,modificacion=true,lista=true)  
+  * @ORM\Table("Slider")
+  * @Custom\Description(value="Administrar Sliders")
+  * @Custom\ABML(modificacion=true,lista=true)  
   *
 */
 
-class Nota extends Entity  {
+class Slider extends Entity  {
     /**
     * @ORM\Id
     * @ORM\GeneratedValue(strategy="AUTO")
@@ -24,46 +24,33 @@ class Nota extends Entity  {
     */
     protected $id;
 
-    /** @ORM\Column(type="text") 
-     * @Custom\Description(value="Título")
-     * @Custom\TextField
+    /** @ORM\Column(type="string") 
+     * @Custom\Description(value="Nombre")
+     * @Custom\ReadOnly
      * @Custom\MainField
      */
-    protected $title;
+    protected $name;
 
     /** @ORM\Column(type="string") 
-     * @Custom\Description(value="Resumen")
-     * @Custom\TextAreaHtml
+     * @Custom\Description(value="Título")
+     * @Custom\TextField
      */
-    protected $resumen;
+    protected $titulo;
     
-    /** @ORM\Column(type="text") 
-     *  @Custom\Description(value="Contenido")
-     *  @Custom\TextAreaHtml
+    /** @ORM\Column(type="string") 
+     *  @Custom\Description(value="Color de fondo")
+     *  @Custom\Color
      */
-    protected $content;
+    protected $color;
     
-    /** @ORM\Column(type="date") 
-    * @Custom\Description(value="Fecha")
-    * @Custom\Date
-    */  
-    protected $fecha;
-
-    /** 
-    * @ORM\ManyToOne(targetEntity="Tipo", cascade={"persist"}) 
-    * @Custom\Description(value="Sección")
-    * @Custom\Select
-    */  
-    protected $seccion;
-        
     /**
     * @ORM\ManyToMany(targetEntity="Imagen", cascade={"persist"})
-    * @ORM\JoinTable(name="NotaImagenes",
+    * @ORM\JoinTable(name="SliderImagenes",
     *      joinColumns={@ORM\JoinColumn(name="info_id", referencedColumnName="id")},
     *      inverseJoinColumns={@ORM\JoinColumn(name="imagen_id", referencedColumnName="id")}
     *      )
     * @Custom\Description(value="Imágenes")    
-    * @Custom\Gallery(limit=1)
+    * @Custom\Gallery
     */
     protected $imgs;
     

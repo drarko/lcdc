@@ -25,7 +25,7 @@
 							<?php foreach($value as $nota) : ?>
 							    <a href="/nota/<?php echo $nota->getId(); ?>"><article class="seccion">
 								    <figure>
-									    <img src="<?php echo $nota->getFirstImg(); ?>"/>
+									    <img src="/<?php echo $nota->getFirstImg(); ?>"/>
 								    </figure>
 								    <div>
 									    <p class="left"><?php echo strtoupper($key); ?></p>
@@ -46,21 +46,13 @@
 			<div class="slider-seccion">
 		        <div class="flexslider carousel">
 		          <ul class="slides">
-			            <li>
-			            	<div class="title verde">NUEVO</div>
-			  	    	    <img src="img/slide.jpg">
-			  	    	    <p>La casa más sustentable del mundo</p>
-			  	    	</li>
-			  	    	<li>
-			  	    		<div class="title verde">NUEVO</div>
-			  	    	    <img src="img/slide02.jpg">
-			  	    	    <p>Texto largo de prueba, Texto largo de prueba, Texto largo de prueba, Texto largo de prueba</p>
-			  	    	</li>
-			  	    	<li>
-			  	    		<div class="title verde">NUEVO</div>
-			  	    	    <img src="img/slide03.jpg">
-			  	    	    <p>Participa!</p>
-			  	    	</li>
+			  <?php foreach($this->banner as $banner) : ?>
+			      <li>
+				    <div class="title naranja" style="background-color: <?php echo $banner->getColor();?>"><?php echo $banner->getTitulo(); ?></div>
+				    <img src="/<?php echo $banner->getFirstImg(); ?>">
+				    <p><?php echo $banner->getTexto(); ?></p>
+			      </li>
+			  <?php endforeach ?>
 		          	</ul>
 		        </div> 
 	        </div>    		
