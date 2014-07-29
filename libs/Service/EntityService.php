@@ -18,6 +18,11 @@ class Entity implements ServiceLocatorAwareInterface
       $this->em = $this->sm->get('Doctrine\ORM\EntityManager');
     }
     
+    public function getEntityManager()
+    {
+      return $this->em;
+    }
+    
     public function setServiceLocator(ServiceLocatorInterface $serviceLocator)
     {
         $this->services = $serviceLocator;

@@ -6,6 +6,7 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Form\Annotation\AnnotationBuilder;
 use Zend\View\Model\ViewModel;
 use Auth\Form\LoginForm;
+use Auth\Form\ChangepassForm;
 
 use Controller\ControllerPublic;
 
@@ -13,6 +14,7 @@ use Controller\ControllerPublic;
 class LoginController extends ControllerPublic
 {
     protected $form;
+    protected $form2;
     protected $storage;
     protected $authservice;
     
@@ -48,6 +50,16 @@ class LoginController extends ControllerPublic
         }
         
         return $this->form;
+    }
+    
+    public function getForm2()
+    {
+        if (! $this->form2) {
+            $user       = new ChangepassForm();
+            $this->form2 = $user;
+        }
+        
+        return $this->form2;
     }
     
     public function loginAction()
@@ -113,6 +125,48 @@ class LoginController extends ControllerPublic
         );
     }
     
+    public function changepassAction()
+    {
+        //if already login, redirect to success page 
+        if (!$this->getAuthService()->hasIdentity()){
+
+	      $route = "/auth/login/login";
+	      return $this->redirect()->toUrl($route);
+
+        }
+        $this->layout()->setVariable('menu',$this->getServiceLocator()->get('Admin\Service')->getMenu());
+        
+        $form       = $this->getForm2();
+        
+        $request = $this->getRequest();
+        if ($request->isPost()){
+            $form->setData($request->getPost());
+            if ($form->isValid()){
+		if($this->identity->getClave() == sha1($request->getPost('oldpass'))) {
+		  if($request->getPost('password') == $request->getPost('password2')) {
+		     $entity = $this->getServiceLocator()->get('Service\Entity');
+		     $user = $entity->getEntityManager()->getRepository('Entities\Usuario')->findOneByUsuario($this->identity->getUsuario());
+		     $user->setClave(sha1($request->getPost('password')));
+		     $entity->getEntityManager()->persist($user);
+		     $entity->getEntityManager()->flush();
+		     $route = "/auth/login/logout";
+		     return $this->redirect()->toUrl($route);		    
+		   } else {
+       		    $route = "/auth/login/changepass";
+ 		    return $this->redirect()->toUrl($route);		    		   
+		   }
+		} else {
+		    $route = "/auth/login/changepass";
+		    return $this->redirect()->toUrl($route);		    
+		}
+            }
+        }
+       
+        return array(
+            'form'      => $form,
+            'messages'  => $this->flashmessenger()->getMessages()
+        );
+    }    
     
     public function logoutAction()
     {

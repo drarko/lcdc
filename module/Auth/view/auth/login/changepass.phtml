@@ -1,0 +1,49 @@
+<h1>Cambiar Contraseña</h1>
+
+<p id="form-errors"> </p>
+<?php
+$form = $this->form;
+$form->setAttribute('action', '/auth/login/changepass');
+$form->prepare();
+
+
+// Get the form label plugin
+$formLabel = $this->plugin('formLabel');
+
+// Render the opening tag
+echo $this->form()->openTag($form);
+?>
+<div class="form_element">
+<?php
+    $name = $form->get('oldpass');
+    echo $formLabel->openTag() . $name->getOption('label');
+    echo $formLabel->closeTag();
+    echo $this->formInput($name);
+    echo $this->formElementErrors($name);
+?></div>
+<div class="floatstop"></div>
+
+<div class="form_element">
+<?php
+    $name = $form->get('password');
+    echo $formLabel->openTag() . $name->getOption('label');
+    echo $formLabel->closeTag();
+    echo $this->formInput($name);
+    echo $this->formElementErrors($name);
+?></div>
+<div class="floatstop"></div>
+
+<div class="form_element">
+<?php
+    $name = $form->get('password2');
+    echo $formLabel->openTag() . $name->getOption('label');
+    echo $formLabel->closeTag();
+    echo $this->formInput($name);
+    echo $this->formElementErrors($name);
+?></div>
+<div class="floatstop"></div>
+
+<?php echo $this->formElement($form->get('submit')) ?>
+
+<?php echo $this->form()->closeTag() ?>
+<div class="floatstop"></div>

@@ -29,12 +29,6 @@ class Imagen extends Entity  {
      *  @Custom\TextField
      */
     protected $name;
-    
-    /** @ORM\Column(type="text", name="`desc`") 
-     *  @Custom\Description(value="Descripción")    
-     *  @Custom\TextArea
-     */
-    protected $desc;
 
     /** @ORM\Column(type="text") 
      *  @Custom\Description(value="Imagen")
