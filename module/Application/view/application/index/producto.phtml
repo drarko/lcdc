@@ -14,17 +14,21 @@
 <div id="overlay">
 	<div class="cuadro">
 		<article>
-			<ul class="bxslider">
+		    <div id="slider" class="flexslider">
+			<ul class="bxslider slides">
 			  <?php foreach($this->prod->getImgs() as $img) : ?>
 			      <li><img src="/<?php echo $img->getUri(); ?>" /></li>
 			  <?php endforeach ?> 
 			</ul>
-			<div id="bx-pager">
+		      </div>
+			<div id="bx-pager" class="flexslider">
+			  <ul class="slides">
 			  <?php $i = 0; ?>
-			  <?php foreach($this->prod->getImgs() as $img) : ?>
-			      <a data-slide-index="<?php echo $i; ?>" href=""><img src="/<?php echo $img->getUri(); ?>" /></a>
-			  <?php $i++; ?>
+			  <?php foreach($this->prod->getImgs() as $img) : ?><li>
+			    <img src="/<?php echo $img->getUri(); ?>" />
+			  <?php $i++; ?></li>
 			  <?php endforeach ?> 
+			  </ul>
 			</div>							
 		</article>
 		<article>
@@ -45,8 +49,28 @@
     boton04.click(
     function (){
         $('#overlay').hide(200);
-    });  
-    $('.bxslider').bxSlider({
-	  pagerCustom: '#bx-pager'
     });
+  $('#bx-pager').flexslider({
+    animation: "slide",
+    controlNav: false,
+    directionNav: true,
+    animationLoop: false,
+    slideshow: false,
+    itemWidth: 80,
+    itemMargin: 0,
+    asNavFor: '#slider',
+    prevText: "<",           //String: Set the text for the "previous" directionNav item
+    nextText: ">",               //String: Set the text for the "next" directionNav item
+    
+  });
+   
+  $('#slider').flexslider({
+    animation: "slide",
+    controlNav: false,
+    animationLoop: false,
+    slideshow: false,
+    sync: "#bx-pager",
+    prevText: "",           //String: Set the text for the "previous" directionNav item
+    nextText: "",               //String: Set the text for the "next" directionNav item    
+  });    
 </script>

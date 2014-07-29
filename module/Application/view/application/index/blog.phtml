@@ -48,9 +48,11 @@
 		          <ul class="slides">
 			  <?php foreach($this->banner as $banner) : ?>
 			      <li>
-				    <div class="title naranja" style="background-color: <?php echo $banner->getColor();?>"><?php echo $banner->getTitulo(); ?></div>
+			        <a href="<?php echo $banner->getLink(); ?>" target="_blank">
+				    <div class="title <?php echo $banner->getColor()->getClass();?>"><?php echo $banner->getTitulo(); ?></div>
 				    <img src="/<?php echo $banner->getFirstImg(); ?>">
 				    <p><?php echo $banner->getTexto(); ?></p>
+				 </a>
 			      </li>
 			  <?php endforeach ?>
 		          	</ul>

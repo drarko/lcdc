@@ -37,10 +37,11 @@ class Slider extends Entity  {
      */
     protected $titulo;
     
-    /** @ORM\Column(type="string") 
-     *  @Custom\Description(value="Color de fondo")
-     *  @Custom\Color
-     */
+    /** 
+    * @ORM\ManyToOne(targetEntity="Color", cascade={"persist"}) 
+    * @Custom\Description(value="Color de fondo")
+    * @Custom\Select
+    */  
     protected $color;
     
     /**
