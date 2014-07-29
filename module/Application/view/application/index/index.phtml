@@ -44,37 +44,37 @@
 	        </div>
 	        <div class="banner01">
 			  <?php foreach($this->bann01 as $banner) : ?>
-			      <li>
+			     
 				 <a href="<?php echo $banner->getLink(); ?>" target="_blank">
  				    <div class="title <?php echo $banner->getColor()->getClass();?>"><?php echo $banner->getTitulo(); ?></div>
 				    <img src="/<?php echo $banner->getFirstImg(); ?>">
 				    <p><?php echo $banner->getTexto(); ?></p>
 				 </a>
-			      </li>
+			   
 			  <?php endforeach ?>		
 	       	</div> 
 		</section>
 		<aside class="aside-home">
 			<div class="banner02">
 			  <?php foreach($this->bann02 as $banner) : ?>
-			      <li>
+			     
 				 <a href="<?php echo $banner->getLink(); ?>" target="_blank">
  				    <div class="title <?php echo $banner->getColor()->getClass();?>"><?php echo $banner->getTitulo(); ?></div>
 				    <img src="/<?php echo $banner->getFirstImg(); ?>">
 				    <p><?php echo $banner->getTexto(); ?></p>
 				 </a>
-			      </li>
+			    
 			  <?php endforeach ?>
 	       	</div>
 	       	<div class="banner03">
 			  <?php foreach($this->bann03 as $banner) : ?>
-			      <li>
+			 
 				 <a href="<?php echo $banner->getLink(); ?>" target="_blank">
  				    <div class="title <?php echo $banner->getColor()->getClass();?>"><?php echo $banner->getTitulo(); ?></div>
 				    <img src="/<?php echo $banner->getFirstImg(); ?>">
 				    <p><?php echo $banner->getTexto(); ?></p>
 				 </a>
-			      </li>
+			  
 			  <?php endforeach ?>
 	       	</div>  
 		</aside>

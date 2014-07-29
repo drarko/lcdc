@@ -36,7 +36,7 @@
 	              <p>
 			<?php if(isset($value['subcat'])) : ?>
 			<?php foreach($value['subcat'] as $subcat) :?>
-			    <a href="/catalogo/<?php echo $subcat->getId(); ?>"><?php echo $subcat->getName(); ?></a>
+			    <a <?php if($subcat->getId() == $this->catid) echo 'class="active"'; ?> href="/catalogo/<?php echo $subcat->getId(); ?>"><?php echo $subcat->getName(); ?></a>
 	                <?php endforeach ?>
 	                <?php endif ?>
 	              </p>

@@ -80,6 +80,7 @@ class ApplicationService extends Entity
 	      }
 	      if($insert) $result[] = $res2;
 	    }
+	    return $result;
 	}
 	return $this->em->getRepository('Entities\Producto')->findBy(array("destacado" => true));
     }

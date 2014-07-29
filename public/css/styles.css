@@ -110,7 +110,7 @@ header .busqueda02 .btn_buscar{
 }
 
 .redes-sociales div{
-	background-image: url(../img/redes-sociales.png);
+	background-image: url(/img/redes-sociales.png);
 	width: 23px;
 	height: 23px;
 	float: left;
@@ -224,19 +224,19 @@ footer nav li a:hover{
 }
 
 .lila{
-	background-image: url(../img/violeta.png);
+	background-image: url(/img/violeta.png);
 }
 
 .verde{
-	background-image: url(../img/verde.png);
+	background-image: url(/img/verde.png);
 }
 
 .naranja{
-	background-image: url(../img/naranja.png);
+	background-image: url/img/naranja.png);
 }
 
 .rosa{
-	background-image: url(../img/rosa.png);
+	background-image: url(/img/rosa.png);
 }
 
 section{
@@ -435,7 +435,7 @@ vertical-align: middle;}
 }
 
 .violeta02{
-	background-image: url(../img/violeta.png);
+	background-image: url(/img/violeta.png);
 	background-position: 0 0;
 	background-color: #81398A;
 }
@@ -467,7 +467,7 @@ vertical-align: middle;}
 }
 
 .mapa .regalos{
-	background-image: url(../img/regalos.jpg);
+	background-image: url(/img/regalos.jpg);
 	background-repeat: no-repeat;
 	background-size: 100%;
 	width: 15%;
@@ -475,7 +475,7 @@ vertical-align: middle;}
 }
 
 .mapa .dormitorio{
-	background-image: url(../img/dormitorio.jpg);
+	background-image: url(/img/dormitorio.jpg);
 	background-repeat: no-repeat;
 	background-size: 100%;
 	width: 24.8%;
@@ -483,7 +483,7 @@ vertical-align: middle;}
 }
 
 .mapa .bano{
-	background-image: url(../img/bano.jpg);
+	background-image: url(/img/bano.jpg);
 	background-repeat: no-repeat;
 	background-size: 100%;
 	width: 16.8%;
@@ -491,7 +491,7 @@ vertical-align: middle;}
 }
 
 .mapa .ninos{
-	background-image: url(../img/ninos.jpg);
+	background-image: url(/img/ninos.jpg);
 	background-repeat: no-repeat;
 	background-size: 100%;
 	width: 23.4%;
@@ -499,7 +499,7 @@ vertical-align: middle;}
 }
 
 .mapa .exterior{
-	background-image: url(../img/exterior.jpg);
+	background-image: url(/img/exterior.jpg);
 	background-repeat: no-repeat;
 	background-size: 100%;
 	width: 18.7%;
@@ -510,7 +510,7 @@ vertical-align: middle;}
 }
 
 .mapa .cocina{
-	background-image: url(../img/cocina.jpg);
+	background-image: url(/img/cocina.jpg);
 	background-repeat: no-repeat;
 	background-size: 100%;
 	width: 23.8%;
@@ -518,7 +518,7 @@ vertical-align: middle;}
 }
 
 .mapa .comedor{
-	background-image: url(../img/comedor.jpg);
+	background-image: url(/img/comedor.jpg);
 	background-repeat: no-repeat;
 	background-size: 100%;
 	width: 30%;
@@ -526,7 +526,7 @@ vertical-align: middle;}
 }
 
 .mapa .living{
-	background-image: url(../img/living.jpg);
+	background-image: url(/img/living.jpg);
 	background-repeat: no-repeat;
 	background-size: 100%;
 	width: 26.1%;
@@ -569,7 +569,7 @@ vertical-align: middle;}
 	z-index: 9; 
 	left: 0; 
 	height: 50px; 
-	background-image: url(../img/bg_sombra.png); 
+	background-image: url(/img/bg_sombra.png); 
 	color: #fff; 
 	font-weight: 500; 
 	font-size: 1.2em; 
@@ -650,6 +650,10 @@ vertical-align: middle;}
 	font-size: 1.2em;
 }
 
+.responsive-accordion-panel p .active{
+	font-weight:bold;
+}
+
 .catalogo-section .lista{
 	width: 100%;
 	float: left;
@@ -675,7 +679,7 @@ vertical-align: middle;}
   color: #fff;
   font-weight: 500;
   font-size: 1em;
-  background-image: url(../img/catalogo-precio.png);
+  background-image: url(/img/catalogo-precio.png);
   width: 53px;
   height: 15px;
   text-align: center;
