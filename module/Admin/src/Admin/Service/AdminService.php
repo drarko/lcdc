@@ -222,13 +222,12 @@ class AdminService extends Entity
 	foreach($files as $key => $file) {
 	    if($file['error'] == 0) {
 	      $uri[$key] = $file['dest'];
-	    } else {
-	      var_dump($file);die();
+	    } else if($file['error'] == 4){
+	      $uri[$key] = "nochanges";
 	    }
-	    
 	}
       }
-
+      
       $metadata = $this->annotationService->getClassMetadata($this->entity);
       $class = $metadata->getReflectionClass();
       $columns = $metadata->getColumnNames();  
@@ -243,13 +242,16 @@ class AdminService extends Entity
 	if($p != "id") {
 	  foreach($v as $obj) {
 	    if($obj instanceof \Doctrine\ORM\Mapping\Column) {
-	      if(in_array($p,array("start_date","end_date","date", "fecha"))) {
+	      if(in_array($p,array("start_date","end_date","date"))) {
 		$data[$p] = \DateTime::createFromFormat("d/m/Y",$data[$p]);
 		if(!$data[$p]) { $data[$p] = new \DateTime(); $data[$p]->setTimestamp(0); }
-		var_dump($data[$p]);
 	      }
 	      if($p == "uri") {
-		$data[$p] = $uri[$p];
+		if($uri[$p] != "nochanges") {
+		  $data[$p] = $uri[$p];
+		} else {
+		  $data[$p] = $item->get('uri');
+		}
 	      }
 	      $item->set($p,$data[$p]);
 	    }
