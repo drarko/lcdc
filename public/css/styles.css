@@ -15,8 +15,9 @@ body{
 	color:#823080;
 }
 
-.bg-verde:hover{
+.bg-verde{
 	background-color: #3EA8A3;
+	color: white;
 }
 
 .clear{

@@ -33,10 +33,10 @@
 			<div class="slider-home">
 				<div class="flexslider carousel">
 		          <ul class="slides">
-					<?php foreach($this->slider->getImgs() as $img) : ?>
+					<?php foreach($this->slider as $slide) : ?>
 					    <li>
-						  <div class="title <?php echo $this->slider->getColor()->getClass();?>"><?php echo $this->slider->getTitulo(); ?></div>
-						  <img src="/<?php echo $img->getUri(); ?>">
+						  <div class="title <?php echo $slide->getColor()->getClass();?>"><?php echo $slide->getTitulo(); ?></div>
+						  <img src="/<?php echo $slide->getFirstImg(); ?>">
 					    </li>
 			  	    	<?php endforeach ?>
 		          	</ul>
