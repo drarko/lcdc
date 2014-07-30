@@ -1,3 +1,18 @@
+<?php 
+  $active = 0;
+  switch($this->slug) {
+    case "catalogo":
+      $active = 1;
+      break;
+    case "blog":
+    case "nota":
+      $active = 2;
+      break;
+    case "local":
+      $active = 3;
+      break;
+  }
+?>
 <!DOCTYPE html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -31,10 +46,10 @@
 			<span>
 				<nav>
 					<ul>
-						<li><a href="/">INICIO</a> |</li>
-						<li><a href="/catalogo">CATÁLOGO</a> |</li>
-						<li><a href="/blog">BLOG</a> |</li>
-						<li><a class="bg-verde" href="/local">LOCAL</a></li>
+						<li><a <?php if($active == 0) echo 'class="bg-verde"'; ?> href="/">INICIO</a> |</li>
+						<li><a <?php if($active == 1) echo 'class="bg-verde"'; ?> href="/catalogo">CATÁLOGO</a> |</li>
+						<li><a <?php if($active == 2) echo 'class="bg-verde"'; ?> href="/blog">BLOG</a> |</li>
+						<li><a <?php if($active == 3) echo 'class="bg-verde"'; ?> href="/local">LOCAL</a></li>
 					</ul>
 				</nav>
 				<div class="busqueda" id="busqueda">
