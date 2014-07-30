@@ -34,10 +34,12 @@
 				<div class="flexslider carousel">
 		          <ul class="slides">
 					<?php foreach($this->slider as $slide) : ?>
+					 <a href="<?php echo $slide->getLink(); ?>" target="_blank">
 					    <li>
 						  <div class="title <?php echo $slide->getColor()->getClass();?>"><?php echo $slide->getTitulo(); ?></div>
 						  <img src="/<?php echo $slide->getFirstImg(); ?>">
 					    </li>
+					</a>
 			  	    	<?php endforeach ?>
 		          	</ul>
 		        </div>
