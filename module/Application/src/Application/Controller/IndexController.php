@@ -32,6 +32,7 @@ class IndexController extends ControllerPublic
 	$this->view->setVariable('bann02',$this->service->getBanner('HOME-02'));
 	$this->view->setVariable('bann03',$this->service->getBanner('HOME-03'));
 	$this->view->setVariable('slider',$this->service->getBanner('HOME-SLIDER'));
+	$this->view->setVariable('categorias',$this->service->getCategorias());
 	return $this->view;
     }
     
