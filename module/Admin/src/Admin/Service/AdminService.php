@@ -246,7 +246,6 @@ class AdminService extends Entity
 	      if(in_array($p,array("start_date","end_date","date", "fecha"))) {
 		$data[$p] = \DateTime::createFromFormat("d/m/Y",$data[$p]);
 		if(!$data[$p]) { $data[$p] = new \DateTime(); $data[$p]->setTimestamp(0); }
-		var_dump($data[$p]);
 	      }
 	      if($p == "uri") {
 		$data[$p] = $uri[$p];

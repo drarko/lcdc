@@ -1,0 +1,75 @@
+		<section class="home">
+			<div class="mapa">
+				<h3>ELEGÍ UN AMBIENTE DE LA CASA</h3>
+				<div class="row clear">
+					<div class="regalos">
+						<a href="#"><img src="/img/regalos02.jpg"></a>
+					</div>
+					<div class="dormitorio">
+						<a href="#"><img src="/img/dormitorio02.jpg"></a>
+					</div>
+					<div class="bano">
+						<a href="#"><img src="/img/bano02.jpg"></a>
+					</div>
+					<div class="ninos">
+						<a href="#"><img src="/img/ninos02.jpg"></a>
+					</div>
+				</div>
+				<div class="row clear">
+					<div class="cocina">
+						<a href="#"><img src="/img/cocina02.jpg"></a>
+					</div>
+					<div class="comedor">
+						<a href="#"><img src="/img/comedor02.jpg"></a>
+					</div>
+					<div class="living">
+						<a href="#"><img src="/img/living02.jpg"></a>
+					</div>
+					<div class="exterior">
+						<a href="#"><img src="/img/exterior02.jpg"></a>
+					</div>
+				</div>
+			</div>
+			<div class="slider-home">
+				<div class="flexslider carousel">
+		          <ul class="slides">
+					<?php foreach($this->slider->getImgs() as $img) : ?>
+					    <li>
+						  <div class="title naranja" style="background-color: <?php echo $this->slider->getColor();?>"><?php echo $this->slider->getTitulo(); ?></div>
+						  <img src="/<?php echo $img->getUri(); ?>">
+					    </li>
+			  	    	<?php endforeach ?>
+		          	</ul>
+		        </div>
+	        </div>
+	        <div class="banner01">
+			  <?php foreach($this->bann01 as $banner) : ?>
+			      <li>
+				    <div class="title naranja" style="background-color: <?php echo $banner->getColor();?>"><?php echo $banner->getTitulo(); ?></div>
+				    <img src="/<?php echo $banner->getFirstImg(); ?>">
+				    <p><?php echo $banner->getTexto(); ?></p>
+			      </li>
+			  <?php endforeach ?>		
+	       	</div> 
+		</section>
+		<aside class="aside-home">
+			<div class="banner02">
+			  <?php foreach($this->bann02 as $banner) : ?>
+			      <li>
+				    <div class="title naranja" style="background-color: <?php echo $banner->getColor();?>"><?php echo $banner->getTitulo(); ?></div>
+				    <img src="/<?php echo $banner->getFirstImg(); ?>">
+				    <p><?php echo $banner->getTexto(); ?></p>
+			      </li>
+			  <?php endforeach ?>
+	       	</div>
+	       	<div class="banner03">
+			  <?php foreach($this->bann03 as $banner) : ?>
+			      <li>
+				    <div class="title naranja" style="background-color: <?php echo $banner->getColor();?>"><?php echo $banner->getTitulo(); ?></div>
+				    <img src="/<?php echo $banner->getFirstImg(); ?>">
+				    <p><?php echo $banner->getTexto(); ?></p>
+			      </li>
+			  <?php endforeach ?>
+	       	</div>  
+		</aside>
+		<div class="clear"></div>
