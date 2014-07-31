@@ -94,4 +94,22 @@ class IndexController extends ControllerPublic
       return $this->view;      
     }
 
+    public function buscarAction()
+    {
+      $this->view->setVariable('sin_resultados',false);
+      $this->view->setVariable('term_vacio',false);
+      $term = $this->params()->fromRoute('term');
+      if($term != "") {
+	$result = $this->service->buscar($term);
+	if(count($result) != 0) {
+	  $this->view->setVariable('resultados',$result);
+	  return $this->view;
+	}
+	$this->view->setVariable('resultados',array());
+	$this->view->setVariable('sin_resultados',true);
+      }
+      $this->view->setVariable('resultados',array());
+      $this->view->setVariable('term_vacio',true);
+      return $this->view;
+    }
 }

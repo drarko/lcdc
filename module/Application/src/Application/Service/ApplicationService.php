@@ -105,7 +105,40 @@ class ApplicationService extends Entity
 	$result = $this->em->getRepository('Entities\Banner')->findByTipo($tipo);
 	if(!is_array($result)) return array($result);
 	return $result;
-    }    
+    }
+    
+    public function buscar($term)
+    {
+      $term = str_replace("_"," ",$term);
+      
+      $productos1 = $this->em->getRepository('Entities\Producto')->findLikeBy(array("name" => $term));
+      $productos2 = $this->em->getRepository('Entities\Producto')->findLikeBy(array("autor" => $term));
+      $productos3 = $this->em->getRepository('Entities\Producto')->findLikeBy(array("desc" => $term));
+
+      $notas1 = $this->em->getRepository('Entities\Nota')->findLikeBy(array("title" => $term));
+      $notas2 = $this->em->getRepository('Entities\Nota')->findLikeBy(array("resumen" => $term));
+      $notas3 = $this->em->getRepository('Entities\Nota')->findLikeBy(array("content" => $term));
+
+      $productos = array();
+      $notas = array();
+
+      for($i=1;$i<4;$i++) {
+	$name = "productos".$i;
+	foreach($$name as $prod) {
+	  if(!in_array($prod->getId(),array_keys($productos))) {
+	    $productos[$prod->getId()] = $prod;
+	  }
+	}
+	$name = "notas".$i;
+	foreach($$name as $nota) {
+	  if(!in_array($nota->getId(),array_keys($notas))) {
+	    $notas[$nota->getId()] = $nota;
+	  }
+	}      
+      }
+      
+      return array("productos" => $productos, "notas" => $notas);
+    }
 } 
 
  

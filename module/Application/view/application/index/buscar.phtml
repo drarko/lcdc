@@ -1,0 +1,16 @@
+Búsqueda
+
+<?php var_dump($this->sin_resultados) ?>
+<?php var_dump($this->term_vacio) ?>
+
+
+<?php 
+  foreach($this->resultados['productos'] as $r) {
+      var_dump($r->getId());var_dump($r->getName());
+  }
+  
+  foreach($this->resultados['notas'] as $r) {
+      var_dump($r->getId());var_dump($r->getTitle());
+  }
+  
+?>
