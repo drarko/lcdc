@@ -71,9 +71,9 @@
 					</ul>
 				</nav>
 				<div class="busqueda" id="busqueda">
-					<div class="busqueda02" id="busqueda02">
-						<input id="newsSearchBoxKeyword" placeholder="Buscar...">
-						<a href="#" id="btn-buscar" class="btn_buscar"><img src="/img/btn_buscar.png"></a>
+					<div class="busqueda02" id="busqueda02"><form method="POST" action="/buscar" id="busq">
+						<input id="newsSearchBoxKeyword" name="term" placeholder="Buscar...">
+						<a href="#" id="btn-buscar" class="btn_buscar"><img src="/img/btn_buscar.png"></a></form>
 					</div>
 				</div>
 				<div class="redes-sociales">
@@ -118,11 +118,19 @@ $(window).load(function() {
     prevText: "",           //String: Set the text for the "previous" directionNav item
     nextText: "",               //String: Set the text for the "next" directionNav item
   });
+
+  $("#btn-buscar").click(function(e){
+	e.preventDefualt;
+	var value = $("#newsSearchBoxKeyword").val();
+	if(value.length) {
+		$("#busq").submit();
+	}
+  });
+  $("#newsSearchBoxKeyword")
   if(location.hash.length) {
       var secc = location.hash;
       secc = secc.replace("#","");
-console.log(secc);
-console.log("#producto-"+secc);
+
       $("#producto-"+secc).click();
 
       $(".idTabs > li > a").each(function(item) {
