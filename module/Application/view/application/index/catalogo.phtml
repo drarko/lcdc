@@ -31,7 +31,7 @@
             <ul class="responsive-accordion responsive-accordion-default bm-larger">
 	      <?php foreach($this->categorias as $key => $value) : ?>
 	          <li>
-	            <div class="responsive-accordion-head <?php if($active == $value['datos']->getId()) echo "active" ?>"><img src="/img/catalogo-<?php echo limpiar(strtolower($key)) ?>.png" alt="dormitorio"/><h5><?php echo strtoupper($key) ?></h5></div>
+	            <div class="responsive-accordion-head <?php if($active == $value['datos']->getId()) echo "active" ?>"><img src="/img/catalogo-<?php echo limpiar(strtolower($key)) ?>.png" alt="dormitorio"/><h5><?php echo mb_strtoupper($key,"UTF-8") ?></h5></div>
 	            <div class="responsive-accordion-panel <?php if($active == $value['datos']->getId()) echo "active" ?>">
 	              <p>
 			<?php if(isset($value['subcat'])) : ?>

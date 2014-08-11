@@ -13,16 +13,16 @@
 			<div class="usual">
 				<ul class="tabs"> 
 				  <?php foreach($this->secc as $value) : ?>
-					<li><a href="/blog#<?php echo limpiar(strtolower($value->getName())); ?>"><?php echo strtoupper($value->getName()); ?></a></li> 
+					<li><a href="/blog#<?php echo limpiar(strtolower($value->getName())); ?>" <?php echo (limpiar(strtolower($value->getName()))==limpiar(strtolower($this->nota->getSeccion()->getName()))?'class="selected"':'');?>><?php echo mb_strtoupper($value->getName(),"UTF-8"); ?></a></li> 
 				  <?php endforeach ?>
 				</ul>
 				<div class="lower"> 
 				      <div id="<?php echo limpiar(strtolower($this->nota->getSeccion()->getName())); ?>">
-							<span>BLOG - <?php echo strtoupper($this->nota->getSeccion()->getName()); ?></span>
+							<span>BLOG - <?php echo mb_strtoupper($this->nota->getSeccion()->getName(),"UTF-8"); ?></span>
 							    <article class="nota">
 								    <figure>
 									    <img src="/<?php echo $this->nota->getFirstImg(); ?>"/>
-									    <p class="left"><?php echo strtoupper($this->nota->getSeccion()->getName()); ?></p>
+									    <p class="left"><?php echo mb_strtoupper($this->nota->getSeccion()->getName(),"UTF-8"); ?></p>
 									    <p class="right"><?php echo $this->nota->getFecha()->format("d/m/Y"); ?></p>
 								    </figure>
 
@@ -36,4 +36,4 @@
 		</section>
 		<aside>		
 		</aside>
-		<div class="clear"></div>
+		<div class="clear"></div> 

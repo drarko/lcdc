@@ -38,6 +38,24 @@
 <script src="/js/backbone.js" type="text/javascript"></script>
 <script src="/js/catalogo.js" type="text/javascript"></script>
 <script type="text/javascript" src="/js/jquery.idTabs.min.js"></script>
+<script src="/js/jquery.smoothZoom.min.js"></script>
+<script>
+	jQuery(function($){
+		$('#yourImageID').smoothZoom({
+			width: 720,
+			height: 280,
+			
+			/******************************************
+			Enable Responsive settings below if needed.
+			Max width and height values are optional.
+			******************************************/
+			responsive: true,
+			responsive_maintain_ratio: true,
+			max_WIDTH: '720',
+			max_HEIGHT: '280'
+		});
+	});
+</script>
 </head>
 <body>
 	<div class="content">
@@ -100,9 +118,13 @@ $(window).load(function() {
     prevText: "",           //String: Set the text for the "previous" directionNav item
     nextText: "",               //String: Set the text for the "next" directionNav item
   });
-  if($(location.hash).length) {
+  if(location.hash.length) {
       var secc = location.hash;
       secc = secc.replace("#","");
+console.log(secc);
+console.log("#producto-"+secc);
+      $("#producto-"+secc).click();
+
       $(".idTabs > li > a").each(function(item) {
 		console.log($(this));
              $(this).removeClass("selected");

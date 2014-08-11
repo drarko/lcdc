@@ -760,6 +760,154 @@ vertical-align: middle;}
 
 /*--------end catalogo -------*/
 
+.smooth_zoom_preloader {
+		background-image: url(/img/preloader.gif);
+}	
+
+.smooth_zoom_icons {
+	background-image: url(/img/icons.png);
+}
+
+.resultado-busqueda .busqueda{
+	width: 100%;
+	float:left;
+	margin-bottom: 20px;
+}
+
+.resultado-busqueda .busqueda h3{
+	float: left;
+	color: #81398A;
+	font-weight: 500;
+	font-size: 1.3em;
+}
+
+.resultado-busqueda .busqueda ul{
+	float: right;
+	width: 60%;
+}
+
+.resultado-busqueda .busqueda ul li{
+	float: right;
+	padding: 0 2%;
+	border-right: 1px solid #000;
+}
+
+.resultado-busqueda .busqueda ul li:first-child{
+	border-right: none;
+}
+
+
+.resultado-busqueda{
+	float: left;
+	width: 80%;
+	margin-left: 10%;
+}
+
+.resultado-busqueda .lista{
+	width: 100%;
+	float: left;
+	border-bottom: 1px dotted #ccc;
+	margin-bottom: 10px;
+}
+
+.resultado-busqueda .lista li{
+	width: 110px;
+	height: 110px;
+	float: left;
+	position: relative;
+	margin: 0 18px 72px 0;
+	cursor: pointer;
+}
+
+.resultado-busqueda .lista li img{
+  width: 110px;
+  height: 110px;
+}
+
+.resultado-busqueda .producto2 .precio{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1em;
+  background-image: url(/img/catalogo-precio.png);
+  width: 53px;
+  height: 15px;
+  text-align: center;
+}
+
+.resultado-busqueda .item{
+  font-size: 1.1em;
+  margin: 5px 0 5px 0;
+  line-height: 1.1em;
+  width: 100%;
+  font-weight: 700;
+}
+
+.resultado-busqueda span{
+	float: left;
+	width: 100%;
+	margin-bottom: 3%;
+	font-size: 0.9em; 
+}
+
+.resultado-busqueda p{
+  font-size: 0.9em; 
+}
+
+.lower-resultado{
+	float: left;
+	width: 90%;
+}
+
+.lower-resultado a{
+	display: inline-block;
+	width: 85%;
+}
+
+.lower-resultado a:hover{
+	background-color: #EFEFEF;
+}
+
+.lower-resultado span{
+	float: left;
+	width: 100%;
+	margin-bottom: 3%;
+	font-size: 0.9em; 
+}
+
+.lower-resultado .seccion{
+	float: left;
+	padding: 2% 2%  2% 0;
+	border-bottom: 1px dotted #ccc;
+	width: 100%;
+}
+
+.lower-resultado .seccion div{
+	float: left;
+	width: 50%;
+}
+
+.lower-resultado .seccion h1{
+	margin-bottom: 4%;
+	font-size: 1.4em;
+	font-weight: 500;
+}
+
+.lower-resultado .seccion figure{
+	float: left;
+	width: 39%;
+	margin-right: 2%;
+}
+
+.lower-resultado .seccion figure img{
+	max-width: 225px;
+	width: 100%;
+}
+
+
+
 @media only screen and (max-width:960px) {
 	.home{
 		width: 96%;
@@ -821,6 +969,10 @@ vertical-align: middle;}
 	}
 
 	#overlay .cuadro{
+	}
+
+	.resultado-busqueda .lista li{
+		margin: 0 10px 72px 0;
 	}
 }
 

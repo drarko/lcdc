@@ -1,16 +1,47 @@
-Búsqueda
+		<section class="resultado-busqueda">
+			<div class="busqueda">
+				<h3>Resultado de búsqueda "<?php echo $this->term; ?>"</h3>
+				<ul>
+					<li><a href="#">MAYOR PRECIO</a></li>
+					<li><a href="#">MENOR PRECIO</a></li>
+					<li><a href="#">DESTACADOS</a></li>
+				</ul>
+			</div>
+			<?php if(count($this->resultados['productos'])>0) { ?>
+			<ul class="lista">
+				<span>CATÁLOGO / <?php echo count($this->resultados['productos']); ?> RESULTADOS ENCONTRADOS</span>
 
-<?php var_dump($this->sin_resultados) ?>
-<?php var_dump($this->term_vacio) ?>
+				<?php foreach($this->resultados['productos'] as $prod) : ?>
+				<li class="producto2" id="producto-<?php echo $prod->getId(); ?>"><a href="/catalogo#<?php echo $prod->getId(); ?>">
+					<img src="/<?php echo $prod->getFirstImg(); ?>" alt="image-1" />
+					<p class="precio">$<?php echo $prod->getPrecio(); ?></p>
+					<p class="item"><?php echo $prod->getName(); ?></p>
+					<p><?php echo $prod->getAutor(); ?></p></a>
+				</li>
+				<?php endforeach; ?>
 
+			</ul>	
+			<?php } ?>
+			<?php if(count($this->resultados['notas'])>0) { ?>
+			<div class="lower-resultado"> 
+				<span>BLOG / <?php echo count($this->resultados['notas']); ?> RESULTADOS ENCONTRADOS</span>
 
-<?php 
-  foreach($this->resultados['productos'] as $r) {
-      var_dump($r->getId());var_dump($r->getName());
-  }
-  
-  foreach($this->resultados['notas'] as $r) {
-      var_dump($r->getId());var_dump($r->getTitle());
-  }
-  
-?>
+				<?php foreach($this->resultados['notas'] as $nota) : ?>
+				<a href="/nota/<?php echo $nota->getId(); ?>"><article class="seccion">
+					<figure>
+						<img src="/<?php echo $nota->getFirstImg(); ?>">
+					</figure>
+					<div>
+						<p class="left"><?php echo mb_strtoupper($nota->getSeccion()->getName(),"UTF-8"); ?></p>
+						<p class="right"><?php echo $nota->getFecha()->format("d/m/Y"); ?></p>
+					</div>
+					<h1 class="violeta"><?php echo $nota->getTitle(); ?></h1>
+					<?php echo $nota->getResumen(); ?>
+				</article></a>
+				<?php endforeach; ?>
+
+			</div>	
+			<?php } ?>	
+		</section>
+		<div class="clear"></div>
+		<div id="response"></div>

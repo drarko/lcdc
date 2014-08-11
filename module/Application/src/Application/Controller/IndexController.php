@@ -100,6 +100,7 @@ class IndexController extends ControllerPublic
       $this->view->setVariable('term_vacio',false);
       $term = $this->params()->fromRoute('term');
       if($term != "") {
+	$this->view->setVariable('term',$term);
 	$result = $this->service->buscar($term);
 	if(count($result) != 0) {
 	  $this->view->setVariable('resultados',$result);
