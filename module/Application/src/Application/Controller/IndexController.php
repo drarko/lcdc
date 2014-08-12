@@ -99,9 +99,11 @@ class IndexController extends ControllerPublic
       $this->view->setVariable('sin_resultados',false);
       $this->view->setVariable('term_vacio',false);
       $term = $this->params()->fromPost('term');
+      $order = $this->params()->fromPost('order',1);
+      $this->view->setVariable('order',$order);
       if($term != "") {
 	$this->view->setVariable('term',$term);
-	$result = $this->service->buscar($term);
+	$result = $this->service->buscar($term,$order);
 	if(count($result) != 0) {
 	  $this->view->setVariable('resultados',$result);
 	  return $this->view;

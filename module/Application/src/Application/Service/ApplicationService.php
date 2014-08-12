@@ -107,13 +107,25 @@ class ApplicationService extends Entity
 	return $result;
     }
     
-    public function buscar($term)
+    public function buscar($term,$order)
     {
       $term = str_replace("_"," ",$term);
       
-      $productos1 = $this->em->getRepository('Entities\Producto')->findLikeBy(array("name" => $term));
-      $productos2 = $this->em->getRepository('Entities\Producto')->findLikeBy(array("autor" => $term));
-      $productos3 = $this->em->getRepository('Entities\Producto')->findLikeBy(array("desc" => $term));
+      switch($order){
+	case 1:
+	  $orderBy = array("destacado" => "DESC");
+	break;
+	case 2:
+	  $orderBy = array("precio" => "ASC");
+	break;
+	case 3:
+	  $orderBy = array("precio" => "DESC");
+	break;
+      }
+      
+      $productos1 = $this->em->getRepository('Entities\Producto')->findLikeBy(array("name" => $term),$orderBy);
+      $productos2 = $this->em->getRepository('Entities\Producto')->findLikeBy(array("autor" => $term),$orderBy);
+      $productos3 = $this->em->getRepository('Entities\Producto')->findLikeBy(array("desc" => $term),$orderBy);
 
       $notas1 = $this->em->getRepository('Entities\Nota')->findLikeBy(array("title" => $term));
       $notas2 = $this->em->getRepository('Entities\Nota')->findLikeBy(array("resumen" => $term));

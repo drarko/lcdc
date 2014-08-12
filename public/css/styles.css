@@ -906,7 +906,9 @@ vertical-align: middle;}
 	width: 100%;
 }
 
-
+.active{
+	font-weight:bold;
+}
 
 @media only screen and (max-width:960px) {
 	.home{

@@ -18,7 +18,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>La Casa de Cosas</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="shortcut icon" href="favicon.ico" />
+<link rel="shortcut icon" href="/img/favicon.png" />
 <link rel="stylesheet" type="text/css" href="/css/styles.css">
 <link rel="stylesheet" href="/css/flexslider.css" type="text/css" media="screen" />
 <link rel="stylesheet" type="text/css" href="/css/elastislide.css" />
@@ -73,6 +73,7 @@
 				<div class="busqueda" id="busqueda">
 					<div class="busqueda02" id="busqueda02"><form method="POST" action="/buscar" id="busq">
 						<input id="newsSearchBoxKeyword" name="term" placeholder="Buscar...">
+						<input id="order" name="order" type="hidden">
 						<a href="#" id="btn-buscar" class="btn_buscar"><img src="/img/btn_buscar.png"></a></form>
 					</div>
 				</div>
@@ -126,7 +127,7 @@ $(window).load(function() {
 		$("#busq").submit();
 	}
   });
-  $("#newsSearchBoxKeyword")
+  
   if(location.hash.length) {
       var secc = location.hash;
       secc = secc.replace("#","");
