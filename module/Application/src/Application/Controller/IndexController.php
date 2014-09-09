@@ -24,6 +24,7 @@ class IndexController extends ControllerPublic
       parent::init();
       $this->slug     = $this->params()->fromRoute('slug');    
       $this->layout()->setVariable('slug',$this->slug);
+      $this->layout()->setVariable('sociales',$this->service->getRedesSociales());
     }
     
     public function indexAction()

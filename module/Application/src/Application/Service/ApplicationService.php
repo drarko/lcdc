@@ -151,6 +151,17 @@ class ApplicationService extends Entity
       
       return array("productos" => $productos, "notas" => $notas);
     }
+
+    public function getRedesSociales()
+    {
+	return array(
+		"facebook"  => str_replace("</p>","",str_replace("<p>","",$this->getConfig("facebook")->getValue())),
+		"twitter"   => str_replace("</p>","",str_replace("<p>","",$this->getConfig("twitter")->getValue())),
+		"tumblr"    => str_replace("</p>","",str_replace("<p>","",$this->getConfig("tumblr")->getValue())),
+		"instagram" => str_replace("</p>","",str_replace("<p>","",$this->getConfig("instagram")->getValue())),
+		"pinterest" => str_replace("</p>","",str_replace("<p>","",$this->getConfig("pinterest")->getValue()))
+        );
+    }
 } 
 
  
