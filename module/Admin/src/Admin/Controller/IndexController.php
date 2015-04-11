@@ -12,16 +12,17 @@ namespace Admin\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
-use Controller\ControllerPrivate;
+use Controller\ControllerPublic;
 
-class IndexController extends ControllerPrivate
+class IndexController extends ControllerPublic
 {
     public $menu;
     
     public $table;
     public $action;
     public $id;
-    
+    public $base = "";
+	
     public function init()
     {
       parent::init();
@@ -41,6 +42,7 @@ class IndexController extends ControllerPrivate
 	//try {
 	  switch($this->action) {
 	    case '':
+	    case 'list':
 	      $this->listAction();
 	      break;
 	    case "delete":
@@ -63,12 +65,14 @@ class IndexController extends ControllerPrivate
     
     public function listAction()
     {
-      list($list,$perm) = $this->service->getList();
+      list($list,$perm) = $this->service->getList($this->id);
       $cols = $this->service->getColumnInfo();
       
       $this->view->setVariable('perm',$perm);
       $this->view->setVariable('list',$list);
+      $this->view->setVariable('max',$this->service->getListMax());
       $this->view->setVariable('cols',$cols);
+      $this->view->setVariable('id',$this->id);
       
       $this->view->setTemplate('admin/index/list.phtml');
       return;
@@ -80,7 +84,7 @@ class IndexController extends ControllerPrivate
 	if($this->id == $this->getRequest()->getPost()->get('itemid')) {
 	    $this->service->deleteItem($this->id);
 	}
-	return $this->redirect()->toUrl('/admin/'.$this->table)->setStatusCode('301');
+	return $this->redirect()->toUrl($this->base . "/admin/" . $this->table)->setStatusCode('301');
       }
       
       $this->view->setVariable('itemid' , $this->id);
@@ -96,7 +100,7 @@ class IndexController extends ControllerPrivate
     }
     
     public function updateAction()
-    {
+    { 
       if($this->getRequest()->isPost()) {
 	if($this->id == $this->getRequest()->getPost()->get('itemid')) {
 	  $post = $this->getRequest()->getPost();
@@ -104,7 +108,7 @@ class IndexController extends ControllerPrivate
 	  
 	  $this->service->updateItem($post,$files);
 	}
-	return $this->redirect()->toUrl('/admin/'.$this->table)->setStatusCode('301');
+	return $this->redirect()->toUrl($this->base . "/admin/" . $this->table)->setStatusCode('301');
       }
       
       $item = $this->service->getItem($this->id);
@@ -125,7 +129,7 @@ class IndexController extends ControllerPrivate
 	$files = $this->getRequest()->getFiles();
 
 	$this->service->newItem($post,$files);
-	return $this->redirect()->toUrl('/admin/'.$this->table)->setStatusCode('301');
+	return $this->redirect()->toUrl($this->base . "/admin/" . $this->table)->setStatusCode('301');
       }
       
       $cols = $this->service->getColumnInfo();

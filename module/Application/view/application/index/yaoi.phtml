@@ -1,0 +1,14 @@
+		<section class="catalogo-section">
+			<ul class="lista">
+			    <?php foreach($this->imgs as $img) : ?>
+				<li id="imagen-<?php echo $img->getId(); ?>">
+					<a href="<?php echo $img->getFilename(); ?>" target="_blank"><img class="linkno img-thumbnail maxsize" width="140" height="140" src="<?php echo $img->getFilename(); ?>" imagen-id="<?php echo $img->getId(); ?>" alt="image-1" /></a>
+					<a href="#" imagen-id="<?php echo $img->getId(); ?>" class="linksi">Si</a> - 
+					<a href="#" imagen-id="<?php echo $img->getId(); ?>" class="linkno">No</a>
+
+				</li>
+			     <?php endforeach ?>
+			</ul>
+		</section>
+		<div class="clear"></div>
+		<div id="response"></div>

@@ -16,32 +16,70 @@
 		<article>
 		    <div id="slider" class="flexslider">
 			<ul class="bxslider slides">
-			  <?php foreach($this->prod->getImgs() as $img) : ?>
-			      <li><img src="/<?php echo $img->getUri(); ?>" /></li>
-			  <?php endforeach ?> 
+			      <li><img src="<?php echo $this->img->getFilename(); ?>" /></li>
 			</ul>
 		      </div>
 			<div id="bx-pager" class="slider-producto flexslider carousel">
-			  <ul class="slides">
-			  <?php $i = 0; ?>
-			  <?php foreach($this->prod->getImgs() as $img) : ?><li>
-			    <img src="/<?php echo $img->getUri(); ?>" />
-			  <?php $i++; ?></li>
-			  <?php endforeach ?> 
-			  </ul>
 			</div>							
 		</article>
 		<article>
-			<h5><?php echo $this->prod->getName(); ?></h5>
-			<p><?php echo $this->prod->getAutor(); ?></p>
-			<p class="precio">$<?php echo $this->prod->getPrecio(); ?></p>
-			<hr />
-			<p class="item">
-				<?php echo substr(substr($this->prod->getDesc(),3),0,-4); ?>
-			</p>
-			<img src="/img/catalogo-<?php echo limpiar(strtolower($this->prod->getCategoria()->getPadre()->getName())); ?>.png">
+
+<form id="msform">
+<!-- progressbar -->
+<ul id="progressbar">
+<li class="active">Paso 1</li>
+<li class="active">Paso 2</li>
+<li class="active">Paso 3</li>
+</ul>
+<!-- fieldsets -->
+<fieldset>
+<h2 class="fs-title">Paso 1</h2>
+<h3 class="fs-subtitle">Datos generales</h3>
+<div>
+<input type="hidden" name="img_id" id="img_id" value="<?php echo $this->img->getId(); ?>" />
+<label for="yaoi_sino">¿La imagen es yaoi?</label>
+	<select name="yaoi_sino" id="yaoi_sino" data-role="slider">
+		<option value="no">No</option>
+		<option value="si">Si</option>
+	</select> 
+<br/>
+</div><div>
+<label for="conoce_sino">¿Reconoces a los personajes de la imagen?</label>
+	<select name="conoce_sino" id="conoce_sino" data-role="slider">
+		<option value="no">No</option>
+		<option value="si">Si</option>
+	</select> 
+</div><div>
+<label for="hard_soft">¿Es soft o hard?</label>
+	<select name="hard_soft" id="hard_soft" data-role="slider">
+		<option value="soft">Soft</option>
+		<option value="hard">Hard</option>
+	</select> 
+</div>
+<input type="button" name="next" class="next action-button" value="Next" />
+</fieldset>
+<fieldset>
+<h2 class="fs-title">Paso 2</h2>
+<h3 class="fs-subtitle">Detalles</h3>
+
+<label for="serie">Serie/Manga a la que pertenece</label><textarea id="serie" name="serie"></textarea>
+<label for="pareja">Parejas que se muestran</label><textarea id="pareja" name="pareja"></textarea>
+<label for="personaje">Personajes que aparecen</label><textarea id="personaje" name="personaje"></textarea>
+
+<input type="button" name="previous" class="previous action-button" value="Previous" />
+<input type="button" name="next" class="next action-button" value="Next" />
+</fieldset>
+<fieldset>
+<h2 class="fs-title">Paso 3</h2>
+<h3 class="fs-subtitle">Descripcion</h3>
+<label for="descripcion">Escribe una descripcion de la imagen</label><textarea id="descripcion" name="descripcion"></textarea>
+<input type="button" name="previous" class="previous action-button" value="Previous" />
+<input type="submit" name="submit" class="submit action-button" value="Submit" />
+</fieldset>
+</form>
+
 		</article>
-	<div class="close">X</div>
+		<div class="close">X</div>
 	</div>
 </div>
 <script>
@@ -73,4 +111,110 @@
     prevText: "",           //String: Set the text for the "previous" directionNav item
     nextText: "",               //String: Set the text for the "next" directionNav item    
   });    
+</script>
+<script>
+$(function() {
+
+//jQuery time
+var current_fs, next_fs, previous_fs; //fieldsets
+var left, opacity, scale; //fieldset properties which we will animate
+var animating; //flag to prevent quick multi-click glitches
+
+$(".next").click(function(){
+if(animating) return false;
+animating = true;
+
+current_fs = $(this).parent();
+next_fs = $(this).parent().next();
+
+//activate next step on progressbar using the index of next_fs
+$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+//show the next fieldset
+next_fs.show(); 
+//hide the current fieldset with style
+current_fs.animate({opacity: 0}, {
+step: function(now, mx) {
+//as the opacity of current_fs reduces to 0 - stored in "now"
+//1. scale current_fs down to 80%
+scale = 1 - (1 - now) * 0.2;
+//2. bring next_fs from the right(50%)
+left = (now * 50)+"%";
+//3. increase opacity of next_fs to 1 as it moves in
+opacity = 1 - now;
+current_fs.css({'transform': 'scale('+scale+')'});
+next_fs.css({'left': left, 'opacity': opacity});
+}, 
+duration: 800, 
+complete: function(){
+current_fs.hide();
+animating = false;
+}, 
+//this comes from the custom easing plugin
+easing: 'easeInOutBack'
+});
+});
+
+$(".previous").click(function(){
+if(animating) return false;
+animating = true;
+
+current_fs = $(this).parent();
+previous_fs = $(this).parent().prev();
+
+//de-activate current step on progressbar
+$("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+
+//show the previous fieldset
+previous_fs.show(); 
+//hide the current fieldset with style
+current_fs.animate({opacity: 0}, {
+step: function(now, mx) {
+//as the opacity of current_fs reduces to 0 - stored in "now"
+//1. scale previous_fs from 80% to 100%
+scale = 0.8 + (1 - now) * 0.2;
+//2. take current_fs to the right(50%) - from 0%
+left = ((1-now) * 50)+"%";
+//3. increase opacity of previous_fs to 1 as it moves in
+opacity = 1 - now;
+current_fs.css({'left': left});
+previous_fs.css({'transform': 'scale('+scale+')', 'opacity': opacity});
+}, 
+duration: 800, 
+complete: function(){
+current_fs.hide();
+animating = false;
+}, 
+//this comes from the custom easing plugin
+easing: 'easeInOutBack'
+});
+});
+
+$(".submit").click(function(){
+	$.ajax({
+		type: "POST",
+		url: '/propuesta',
+		data: { 
+			'id':			$("#img_id").val(),
+			
+			'yaoi_sino': 	$("#yaoi_sino").val(),
+			'conoce_sino':	$("#conoce_sino").val(),		
+			'hard_soft':	$("#hard_soft").val(),	
+
+			'serie':		$("#serie").val(),
+			'pareja':		$("#pareja").val(),
+			'personaje':	$("#personaje").val(),
+			
+			'descripcion':	$("#descripcion").val()
+		},
+		success: function(res){
+			$('#overlay').hide(200);
+			$("#producto-"+$("#img_id").val()).remove();
+			
+		},
+	});	
+	return false;
+})
+
+});
 </script>

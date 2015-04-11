@@ -21,19 +21,19 @@
 		<td><?php echo $this->annotation_list($value['column'],$list->get($key)) ?></td>
 	      <?php endforeach ?>
 	      <?php if(($this->perm['baja']==true)||($this->perm['modificacion']==true)) : ?>
-		<td><?php if($this->perm['modificacion']==true) : ?><a href="/admin/<?php echo $this->table ?>/update/<?php echo $list->get('id')?>" class="btn site btn-sm">Editar</a> &nbsp;<?php endif ?><?php if($this->perm['baja']==true) : ?>&nbsp; <a href="/admin/<?php echo $this->table ?>/delete/<?php echo $list->get('id')?>" class="btn error site btn-sm">Borrar</a><?php endif ?></td>
+		<td><?php if($this->perm['modificacion']==true) : ?><a href="<?php echo $this->basePath(); ?>/admin/<?php echo $this->table ?>/update/<?php echo $list->get('id')?>" class="btn site btn-sm">Editar</a> &nbsp;<?php endif ?><?php if($this->perm['baja']==true) : ?>&nbsp; <a href="<?php echo $this->basePath(); ?>/admin/<?php echo $this->table ?>/delete/<?php echo $list->get('id')?>" class="btn error site btn-sm">Borrar</a><?php endif ?></td>
 	      <?php endif ?>
 	      </tr>
 	    <?php endforeach ?>
 	  </tr>	
 	</tbody>
-	<?php if($this->perm['alta']==true) : ?>
 	<tfoot>
 	  <tr>
-	    <td colspan="<?php echo count($this->cols)+1 ?>"><a href="/admin/<?php echo $this->table ?>/create" class="btn info">Nuevo</a></td>
+	    <td><a href="<?php echo $this->basePath();?>/admin/<?php echo $this->table ?>/list/<?php echo ($this->id-1);?>" class="btn info" <?php echo ($this->id==0?"disabled":"")?>>Anterior</a></td>
+	    <td colspan="<?php echo count($this->cols)-1 ?>"><?php if($this->perm['alta']==true) : ?><a href="<?php echo $this->basePath();?>/admin/<?php echo $this->table ?>/create" class="btn success">Nuevo</a><?php endif ?></td>
+	    <td><a href="<?php echo $this->basePath();?>/admin/<?php echo $this->table ?>/list/<?php echo ($this->id+1);?>" class="btn info" <?php echo ($this->id==$this->max-1?"disabled":"")?>>Siguiente</a></td>
 	  </tr>
 	</tfoot>	
-	<?php endif ?>
 	</table>
 	</div>
 </div> 

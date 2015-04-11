@@ -32,7 +32,7 @@ class ControllerBase extends AbstractActionController
 	    $this->service = null;
 	  }
 	  
-	  $this->getIdentity();
+	 // $this->getIdentity();
 	  
 	  $this->view->messages = $this->flashmessenger()->getMessages();
 

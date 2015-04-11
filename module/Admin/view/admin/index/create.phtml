@@ -3,7 +3,7 @@
 
 	<h2 class="title">Nuevo Ítem</h2>
 	<div class="block">
-	<form id="activeform" method="POST" action="/admin/<?php echo $this->table ?>/create" enctype="multipart/form-data">
+	<form id="activeform" method="POST" action="<?php echo $this->basePath(); ?>/admin/<?php echo $this->table ?>/create" enctype="multipart/form-data">
 	<table id="tablelist" class="full tablesorter">
 	<tbody>
 	  <tr>
@@ -16,9 +16,9 @@
 	</tbody>	
 	<tfoot>
 	  <tr>
-	    <td colspan="2"><a href="/admin/<?php echo $this->table ?>" class="btn error site">Cancelar</a>&nbsp;&nbsp;&nbsp;<a href="/admin/<?php echo $this->table ?>/create" class="btn site" id="send">Enviar</a></td>
+	    <td colspan="2"><a href="<?php echo $this->basePath(); ?>/admin/<?php echo $this->table ?>" class="btn error site">Cancelar</a>&nbsp;&nbsp;&nbsp;<a href="<?php echo $this->basePath(); ?>/admin/<?php echo $this->table ?>/create" class="btn site" id="send">Enviar</a></td>
 	  </tr>
-	</tfoor>
+	</tfoot>
 	</table>
 	</form>
 	</div>

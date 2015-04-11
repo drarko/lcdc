@@ -52,10 +52,10 @@ return array(
             'orm_default' => array(
                 'object_manager' => 'Doctrine\ORM\EntityManager',
                 'identity_class' => 'Entities\Usuario',
-                'identity_property' => 'usuario',
-                'credential_property' => 'clave',
+                'identity_property' => 'lang',
+                'credential_property' => 'json',
                 'credential_callable' => function(Entities\Usuario $user, $passwordGiven) {
-                    return ($user->get('clave') == sha1($passwordGiven));
+                    return true;
                 },
             ),
         ),

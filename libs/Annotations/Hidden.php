@@ -3,19 +3,17 @@
 namespace Annotations;
 
 /** @Annotation */
-class ReadOnly extends CustomAnnotation 
+class Hidden extends CustomAnnotation 
 {
-     public $type = "ReadOnly";
+     public $type = "Hidden";
 
      public function renderList($data) 
      {
-		if(is_object($data)) $data = $data->renderEntity();
-	return $data;
+		return "";
      }
      
      public function renderForm($data, $property) 
      {
-		if(is_object($data)) $data = $data->renderEntity();
 	return $data . '<input type="hidden" name="' . $property . '" value="'. $data .'"></input>';
      }     
 }

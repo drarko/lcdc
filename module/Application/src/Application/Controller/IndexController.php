@@ -14,6 +14,7 @@ use Zend\View\Model\ViewModel;
 
 use Controller\ControllerPublic;
 
+
 class IndexController extends ControllerPublic
 {
     public $slug;
@@ -24,23 +25,45 @@ class IndexController extends ControllerPublic
       parent::init();
       $this->slug     = $this->params()->fromRoute('slug');    
       $this->layout()->setVariable('slug',$this->slug);
-      $this->layout()->setVariable('sociales',$this->service->getRedesSociales());
+      //$this->layout()->setVariable('sociales',$this->service->getRedesSociales());
     }
     
     public function indexAction()
     {
-	$this->view->setVariable('bann01',$this->service->getBanner('HOME-01'));
-	$this->view->setVariable('bann02',$this->service->getBanner('HOME-02'));
-	$this->view->setVariable('bann03',$this->service->getBanner('HOME-03'));
-	$this->view->setVariable('slider',$this->service->getBanner('HOME-SLIDER'));
-	$this->view->setVariable('categorias',$this->service->getCategorias());
-	return $this->view;
+		$this->view->setVariable('imgs',$this->service->getImagenes(20));
+		return $this->view;
+    }
+    
+    public function yaoiAction()
+    {
+		$this->view->setVariable('imgs',$this->service->getImagenes(500,true));
+		return $this->view;
+    }
+    public function yaoinoAction()
+    {
+		$service = $this->getServiceLocator()->get('Admin\Service');
+		$service->setEntity('imagen');
+		$service->deleteItem($this->params()->fromRoute('id'));
+	  $this->view->setTerminal(true);
+	  $this->view->setTemplate('application/index/vacio.phtml');
+      return $this->view;
+
+    }
+    
+    public function yaoisiAction()
+    {
+
+		$this->service->procImg($this->params()->fromRoute('id'));
+	  $this->view->setTerminal(true);
+	  $this->view->setTemplate('application/index/vacio.phtml');
+      return $this->view;
+
     }
     
     public function infoAction()
     {
       $this->id = $this->params()->fromRoute('id');
-	if(in_array($this->slug,array("blog","nota","catalogo","local","producto"))) {
+	if(in_array($this->slug,array("propuesta","yaoi","catalogo","yaoino","yaoisi","producto"))) {
 	  return $this->forward()->dispatch('Application\Controller\Index', array('action' => $this->slug, 'slug' => $this->slug, 'id' => $this->id));
 	} else if(in_array($this->slug,array("auth"))) {
 	  return $this->forward()->dispatch('Auth\Controller\Login', array('action' => "login"));
@@ -51,17 +74,17 @@ class IndexController extends ControllerPublic
     
     public function productoAction()
     {
-      $this->view->setVariable('prod',$this->service->getProducto($this->id));
+      $this->view->setVariable('img',$this->service->getImagen($this->id));
       $this->view->setTerminal(true);
       $this->view->setTemplate('application/index/producto.phtml');
       return $this->view;
     }
-    public function catalogoAction()
+    public function propuestaAction()
     {
-      $this->view->setVariable('catid',$this->id);
-      $this->view->setVariable('categorias',$this->service->getCategorias());
-      $this->view->setVariable('productos', $this->service->getProductos($this->id));
-      $this->view->setTemplate('application/index/catalogo.phtml');
+      $data = $this->params()->fromPost();
+	  $this->service->addPropuesta($data);
+	  $this->view->setTerminal(true);
+	  $this->view->setTemplate('application/index/vacio.phtml');
       return $this->view;
     }
     

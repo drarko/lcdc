@@ -14,13 +14,7 @@ class ControllerPrivate extends ControllerBase
     
 	parent::init();
 
-	if($this->identity === FALSE)
-	{
-	  
-	    $this->flashmessenger()->addMessage("Debes ingresar al sistema");
-	    return $this->redirect()->toUrl("/auth");
 	
-	}
 
     }
     

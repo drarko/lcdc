@@ -7,6 +7,7 @@
 	<meta name="keywords" content="html, css, js, php" />
         <!-- Le styles -->
         <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+			->prependStylesheet($this->basePath() . '/css/admin/select2.css')
 			->prependStylesheet($this->basePath() . '/css/jquery-ui.css')
 			->prependStylesheet($this->basePath() . '/css/admin/image-picker.css')
 			->prependStylesheet($this->basePath() . '/css/prettyPhoto.css')
@@ -18,6 +19,7 @@
                         ?>
         <!-- Scripts -->
         <?php echo $this->headScript()
+	    ->prependFile($this->basePath() . '/js/admin/select2.js')
 	    ->prependFile($this->basePath() . '/js/admin/app.js')        
 	    ->prependFile($this->basePath() . '/js/admin/masonry.min.js')
 	    ->prependFile($this->basePath() . '/js/admin/image-picker.min.js')
@@ -54,10 +56,10 @@ box-shadow: 0 0 7px black;
 		<div class="w-menu">
 			<h1>Administrador de contenidos</h1>
 			<div class="buttons">
-				<a href="/" class="btn" target="_blank">Ir al sitio web</a>
+				<a href="<?php echo $this->basePath(); ?>/" class="btn" target="_blank">Ir al sitio web</a>
 				<div class="btn-group">
-					<a href="/auth/login/changepass" class="btn">Cambiar contraseña</a>
-					<a href="/auth/login/logout" class="btn info">Salir</a>
+					<a href="<?php echo $this->basePath(); ?>/auth/login/changepass" class="btn">Cambiar contraseña</a>
+					<a href="<?php echo $this->basePath(); ?>/auth/login/logout" class="btn info">Salir</a>
 				</div>
 			</div>
 		</div>
@@ -66,11 +68,11 @@ box-shadow: 0 0 7px black;
 		<div class="w-menu">
 			<ul>
 							<li>
-					<a href="/admin">Listado</a>
+					<a href="<?php echo $this->basePath(); ?>/admin">Listado</a>
 					<ul>
 					<?php foreach($this->menu as $item => $desc) : ?>
 						<li>
-							<a href="/admin/<?php echo $item ?>" ><?php echo $desc ?></a>
+							<a href="<?php echo $this->basePath(); ?>/admin/<?php echo $item ?>" ><?php echo $desc ?></a>
 						</li>
 					<?php endforeach ?>
 					  </ul>

@@ -11,10 +11,10 @@
 	      <?php endforeach ?>
 	      </table>
 	      </div>
-	      <form id="activeform" method="POST" action="/admin/<?php echo $this->table ?>/delete/<?php echo $this->item->get('id') ?>">
+	      <form id="activeform" method="POST" action="<?php echo $this->basePath(); ?>/admin/<?php echo $this->table ?>/delete/<?php echo $this->item->get('id') ?>">
 	      <input type="hidden" name="itemid" value="<?php echo $this->item->get('id') ?>"></input>
 	      </form>
-	      <div><br/><a href="/admin/<?php echo $this->table ?>" class="btn site">Cancelar</a> &nbsp;&nbsp; <a href="/admin/<?php echo $this->table ?>/delete/<?php echo $this->item->get('id') ?>" class="btn error site" id="send">Borrar</a></div>
+	      <div><br/><a href="<?php echo $this->basePath(); ?>/admin/<?php echo $this->table ?>" class="btn site">Cancelar</a> &nbsp;&nbsp; <a href="<?php echo $this->basePath(); ?>/admin/<?php echo $this->table ?>/delete/<?php echo $this->item->get('id') ?>" class="btn error site" id="send">Borrar</a></div>
 	    </div>
 	
 	</div>

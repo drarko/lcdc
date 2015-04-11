@@ -13,7 +13,7 @@ class Gallery extends CustomAnnotation
 	$imgs = $data->toArray();
 	$result = "";
 	foreach($imgs as $i) {
-	  $result = $result . '<a href="/' . $i->get('uri') . '" rel="prettyPhoto"><img class="img-thumbnail maxsize" width="140" height="140" src="/' . $i->get('uri') . '"></img></a>';
+	  $result = $result . '<a href="' . $i->get('filename') . '" rel="prettyPhoto"><img class="img-thumbnail maxsize" width="140" height="140" src="' . $i->get('filename') . '"></img></a>';
 	}
 	return $result;
      }
@@ -33,8 +33,10 @@ class Gallery extends CustomAnnotation
 	} else {
 	  $result = '<select name="'.$property.'[]" multiple="multiple" class="gallery image-picker show-html masonry"><option value=""></option>';
 	}
-	foreach($this->data['list'] as $elm) {
-	  $result = $result . '<option data-img-label="'.$elm->getName().'" data-img-src="/'.$elm->get($this->data['main']).'" value="'.$elm->getId().'" '.((($data != "")&&(in_array($elm->get('id'),$imgsIds)))?"selected":"").'>'.$elm->getName().'</option>';
+	if($data != "") {
+	foreach($imgs as $elm) {
+	  $result = $result . '<option data-img-label="'.$elm->getName().'" data-img-src="'.$elm->get($this->data['main']).'" value="'.$elm->getId().'" '.((($data != "")&&(in_array($elm->get('id'),$imgsIds)))?"selected":"").'>'.$elm->getName().'</option>';
+	}
 	}
 	$result = $result . '</select>';
 	return $result;

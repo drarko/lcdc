@@ -68,12 +68,25 @@ class AdminService extends Entity
       $annotation = $this->reader->getPropertyAnnotation($property, "Annotations\\ReadOnly");
       if($annotation != null) return array("type" => $annotation->getType());
       
-      $annotation = $this->reader->getPropertyAnnotation($property, "Annotations\\Gallery");
+      $annotation = $this->reader->getPropertyAnnotation($property, "Annotations\\Hidden");
+      if($annotation != null) return array("type" => $annotation->getType());
+
+      $annotation = $this->reader->getPropertyAnnotation($property, "Annotations\\MultiSelect");
       if($annotation != null) {
 	$entity = $this->entity;
 	$this->entity = $relation;
 	$datos = $this->getAllList();
 	$main = $this->getMainField();
+	$this->entity = $entity;
+	return array("type" => $annotation->getType(), "list" => $datos, "main" => $main, "limit" => $annotation->getLimit());
+      }
+	  
+      $annotation = $this->reader->getPropertyAnnotation($property, "Annotations\\Gallery");
+      if($annotation != null) {
+	$entity = $this->entity;
+	$this->entity = $relation;
+	//$datos = $this->getAllList();
+	$main = $this->getMainField(); 
 	$this->entity = $entity;
 	return array("type" => $annotation->getType(), "list" => $datos, "main" => $main, "limit" => $annotation->getLimit());
       }
@@ -113,7 +126,7 @@ class AdminService extends Entity
     }
     
     public function getMainField()
-    {
+    { 
       $metadata = $this->annotationService->getClassMetadata($this->entity);
       $class = $metadata->getReflectionClass();
       $columns = $metadata->getColumnNames();  
@@ -160,8 +173,27 @@ class AdminService extends Entity
 	return $this->em->getRepository($this->entity)->findAll();
     }
     
-    public function getList()
+ public function getListMax()
     {
+      $limit = 20;
+      $metadata = $this->annotationService->getClassMetadata($this->entity);
+      $class = $metadata->getReflectionClass();
+      $filter = $this->reader->getClassAnnotation($class, "Annotations\\Filter");
+            
+      if($filter == null) {
+	  $qb = $this->em->createQueryBuilder();
+	  $qb->select('count(u.id)');
+	  $qb->from($this->entity,'u');
+
+	  $count = $qb->getQuery()->getSingleScalarResult();      
+	  return ceil($count/$limit);
+      }
+      return ceil(count(($filter->getResults($this->em->getRepository($this->entity))))/$limit);
+
+    }
+    public function getList($page)
+    {
+      $limit = 20;
       $permisos = array();
       $metadata = $this->annotationService->getClassMetadata($this->entity);
       $class = $metadata->getReflectionClass();
@@ -173,10 +205,18 @@ class AdminService extends Entity
 	$modificacion = $abml->getModificacion();
 	$permisos = array("alta" => $alta,"baja" => $baja,"modificacion" => $modificacion, "lista" => $lista);
       }
+      $offset = $limit * $page;
       $filter = $this->reader->getClassAnnotation($class, "Annotations\\Filter");
-      if($filter == null) return array($this->em->getRepository($this->entity)->findAll(),$permisos);
-      return array($filter->getResults($this->em->getRepository($this->entity)),$permisos);
+      if($filter == null) {
+	
+	$result = $this->em->getRepository($this->entity)->findBy(array(), null, $limit, $offset);
+      } else {
+	$result = $filter->getResults($this->em->getRepository($this->entity));
+      }
+
+      return array($result,$permisos);
     }
+    
     
     public function getItem($id)
     {
@@ -185,9 +225,10 @@ class AdminService extends Entity
     public function deleteItem($id)
     {
       $item = $this->getItem($id);
+  
       $this->em->remove($item);
       $this->em->flush();
-    }    
+    }     
     
     public function newItem($data, $file) 
     {
@@ -241,16 +282,17 @@ class AdminService extends Entity
       foreach($prop as $p => $v) {
 	if($p != "id") {
 	  foreach($v as $obj) {
+		$value = null;
 	    if($obj instanceof \Doctrine\ORM\Mapping\Column) {
 	      if(in_array($p,array("start_date","end_date","date"))) {
 		$data[$p] = \DateTime::createFromFormat("d/m/Y",$data[$p]);
 		if(!$data[$p]) { $data[$p] = new \DateTime(); $data[$p]->setTimestamp(0); }
 	      }
-	      if($p == "uri") {
+	      if($p == "filename") {
 		if($uri[$p] != "nochanges") {
 		  $data[$p] = $uri[$p];
 		} else {
-		  $data[$p] = $item->get('uri');
+		  $data[$p] = $item->get('filename');
 		}
 	      }
 	      $item->set($p,$data[$p]);
@@ -263,14 +305,15 @@ class AdminService extends Entity
 	    if($obj instanceof \Doctrine\ORM\Mapping\ManyToMany) {
 	      $assocData = $metadata->getAssociationMapping($p);
 	      if(isset($data[$p])) {
+		  $values = array();
 		foreach($data[$p] as $val) {
 		  $values[] = $this->em->getRepository($assocData['targetEntity'])->findOneById($val);
 		}	
 		$value = new ArrayCollection($values);
 	      } else {
 		$value = new ArrayCollection();
-	      }
-	      $item->set($p,$value);	   
+	      } 
+	      $item->set($p,$value);
 	    }
 	  }
 	}
@@ -281,11 +324,11 @@ class AdminService extends Entity
     
     public function procFile($files)
     {
-      $dir =  ROOT_PATH . "/public/upload/";
+      $dir =  "D:\Inetpub\parquecanuelas\upload\\";
       foreach($files as $key => $file) {
 	$filename = $dir . uniqid() . $file['name'];
 	move_uploaded_file($file['tmp_name'], $filename);
-	$filename = str_replace(ROOT_PATH . "/public/" , "", $filename);
+	$filename = str_replace($dir , "upload/", $filename);
 	$files[$key]['dest'] = $filename;
       }
       return $files;
